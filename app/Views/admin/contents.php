@@ -1,8 +1,48 @@
 
-<?php
+<style type="text/css">
+   /* styles.css */
+#blinking-background {
+    padding: 8px;
+    font-size: 15px;
+    text-align: center;
+    background-color: yellow;
+    animation: blink-bg 1s infinite;
+    position: relative;
+    border: 10px solid transparent; /* Space for the zigzag border */
+    background-clip: padding-box; /* Ensures background color is not affected by the border */
 
-//echo session()->get('db_name');
-?>
+}
+
+@keyframes blink-bg {
+    0% {
+        background-color: yellow;
+    }
+    50% {
+        background-color: red;
+    }
+    100% {
+        background-color: yellow;
+    }
+}
+
+/* Zigzag border using SVG */
+#blinking-background::before {
+     content: '';
+    position: absolute;
+    top: -10px; /* Adjust based on border width */
+    left: -10px; /* Adjust based on border width */
+    right: -10px; /* Adjust based on border width */
+    bottom: -10px; /* Adjust based on border width */
+    background: repeating-linear-gradient(
+        45deg,
+        #007BFF,
+        #007BFF 10px,
+        transparent 10px,
+        transparent 20px
+    );
+    z-index: -1;
+}
+</style>
 <style>
     /* Ensure the dropdown aligns to the left */
     .yearpicker-container {
