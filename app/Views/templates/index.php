@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Stocker - Stock Market Website Template</title>
+        <title>E&R Enterprises</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -28,6 +28,7 @@
 
         <!-- Template Stylesheet -->
         <link href="public/web/css/style.css" rel="stylesheet">
+        <link href="public/web/css/login.css" rel="stylesheet">
     </head>
 
     <body>
@@ -45,16 +46,18 @@
             <div class="row gx-0 align-items-center">
                 <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                     <div class="d-flex flex-wrap">
-                        <a href="#" class="text-muted small me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a>
+                        <!-- <a href="#" class="text-muted small me-4"><i class="fas fa-map-marker-alt text-primary me-2"></i>Find A Location</a> -->
                         <a href="tel:+01234567890" class="text-muted small me-4"><i class="fas fa-phone-alt text-primary me-2"></i>+01234567890</a>
                         <a href="mailto:example@gmail.com" class="text-muted small me-0"><i class="fas fa-envelope text-primary me-2"></i>Example@gmail.com</a>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">
                     <div class="d-inline-flex align-items-center" style="height: 45px;">
-                        <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>Register</small></a>
-                        <a href="#"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Login</small></a>
-                        <div class="dropdown">
+                        <!-- <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>Register</small></a> -->
+                        <a href="#" onclick="login()"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Login</small></a>
+                       
+                        <!-- <div class="dropdown">
+
                             <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i> My Dashboard</small></a>
                             <div class="dropdown-menu rounded">
                                 <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i> My Profile</a>
@@ -63,13 +66,15 @@
                                 <a href="#" class="dropdown-item"><i class="fas fa-cog me-2"></i> Account Settings</a>
                                 <a href="#" class="dropdown-item"><i class="fas fa-power-off me-2"></i> Log Out</a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
+                
             </div>
+            
         </div>
         <!-- Topbar End -->
-
+       
         <!-- Navbar & Hero Start -->
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
@@ -82,6 +87,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
+                        
                         <a href="index.html" class="nav-item nav-link active">Home</a>
                         <a href="about.html" class="nav-item nav-link">About</a>
                         <a href="service.html" class="nav-item nav-link">Services</a>
@@ -965,7 +971,48 @@
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
-
+            
+        
+          <!-- Login modal -->
+        <div id="myModal" class="modal fade"  role="dialog" >
+    <div class="modal-dialog modal-lg" style="width:375px;">
+    
+      <!-- Modal content-->
+      <div class="modal-content wrapper" style="">
+        <!-- <div class="modal-header"> -->
+          <!-- <h5 class="modal-title" id="staticBackdropLabel">Login</h5> -->
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+        <div class="modal-body">
+        <div class="wrapper">
+        <div class="logo">
+            <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt="">
+        </div>
+        <div class="text-center mt-4 name">
+            E&R Enterprises
+        </div>
+        <form class="p-3 mt-3" id="login_form">
+            <div id="fdbk"></div>
+            <div class="form-field d-flex align-items-center">
+                <span class="far fa-user"></span>
+                <input type="text" name="userName" id="username" placeholder="Username" required="required">
+            </div>
+            <div class="form-field d-flex align-items-center">
+                <span class="fas fa-key"></span>
+                <input type="password" name="password" id="pwd" placeholder="Password" required="required">
+            </div>
+            <button class="btn mt-3" onClick="checkLogin()" type="submit">Login</button>
+            <button type="button" class="btn2 mt-1" data-bs-dismiss="modal" aria-label="Close">close</button>
+        </form>
+        <!-- <div class="text-center fs-6">
+            <a href="#">Forget password?</a> or <a href="#">Sign up</a>
+        </div> -->
+    </div>
+        </div>
+      </div>
+      
+    </div>
+</div>
         
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -984,9 +1031,39 @@
 
 </html>
 
-Your account is created successfully -- Username: S1962.0037.2014 -- Password: James1996# -- Log in as a registered user to continue..
+<script type="text/javascript">
+function login(){
+    $('#myModal').modal('show');
+   
+    //alert(2);
+}
 
-Kati    Longuo  Moshi CBD   Kilimanjaro     25116
-Your Payment Control no is 991386894335
-
-241203T0102-BV
+$('#login_form').submit(function (e) {
+    e.preventDefault();
+    $('#fdbk').html('<span class="fa fa-spinner fa-spin"></span> ...');
+// alert(0);
+var dta = $('#login_form').serialize(); 
+            //alert(dta);
+           // return;
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url() . 'login_details'; ?>",
+                data: dta,
+                success: function (res) {
+                    if(res==200){
+                        $('#fdbk').html("<div class='alert alert-success'><span class='fa fa-tick'></span> LoggedIn Successfuly</div>");
+                        window.location.replace('<?php echo base_url('dashboard'); ?>');
+                    }else{
+              $('#fdbk').html(res);
+                    }
+                  
+                },
+                error: function () {
+                    $('#fdbk').html('<div class="alert alert-warning">Failed to login.!!</div>');
+                }
+            });
+});
+// function checkLogin(){
+//     alert(1);
+// }
+    </script>

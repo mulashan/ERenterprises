@@ -1,0 +1,51 @@
+CRITICAL - 2024-12-08 10:21:48 --> ErrorException: Undefined property: App\Controllers\LoginController::$session
+[Method: POST, Route: login_details]
+in APPPATH\Controllers\LoginController.php on line 30.
+ 1 APPPATH\Controllers\LoginController.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\LoginController::$session', 'C:\\wamp64\\www\\ERenterprises\\app\\Controllers\\LoginController.php', 30)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\LoginController->login()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LoginController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-08 11:48:54 --> ErrorException: Undefined array key "user_photo"
+[Method: GET, Route: dashboard]
+in APPPATH\Views\admin\header.php on line 453.
+ 1 APPPATH\Views\admin\header.php(453): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user_photo"', 'C:\\wamp64\\www\\ERenterprises\\app\\Views\\admin\\header.php', 453)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\ERenterprises\\app\\Views\\admin\\header.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('admin/header', [], true)
+ 5 APPPATH\Controllers\ContentController.php(15): view('admin/header')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ContentController->dashboard_details()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-08 12:16:15 --> ErrorException: Undefined array key "user_photo"
+[Method: GET, Route: dashboard]
+in APPPATH\Views\admin\header.php on line 453.
+ 1 APPPATH\Views\admin\header.php(453): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "user_photo"', 'C:\\wamp64\\www\\ERenterprises\\app\\Views\\admin\\header.php', 453)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\ERenterprises\\app\\Views\\admin\\header.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('admin/header', [], true)
+ 5 APPPATH\Controllers\ContentController.php(15): view('admin/header')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ContentController->dashboard_details()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContentController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-12-08 12:45:26 --> Error: Attempt to assign property "id" on null
+[Method: GET, Route: dashboard]
+in APPPATH\Views\admin\contents.php on line 38.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('admin/contents', [], true)
+ 4 APPPATH\Controllers\ContentController.php(20): view('admin/contents')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ContentController->dashboard_details()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ContentController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
