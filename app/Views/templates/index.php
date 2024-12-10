@@ -151,7 +151,7 @@
                             <div class="row g-5">
                                 <div class="col-12 animated fadeInUp">
                                     <div class="text-center">
-                                        <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To Stocker</h4>
+                                        <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To E&R Enterprises</h4>
                                         <h1 class="display-4 text-uppercase text-white mb-4">Invest your money with higher return</h1>
                                         <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy... 
                                         </p>
