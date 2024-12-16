@@ -1,8 +1,5 @@
 
 <?php
-$login = new App\Models\LoginModel();
-
-use App\Models\BillModel;
 
 ?>
 <!doctype html>
@@ -354,7 +351,7 @@ use App\Models\BillModel;
             <a href="javascript:void(0)" class="menu_option float-right">
         </a></h5>
         <ul class="nav nav-tabs">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu-uni"> market</a></li>
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu-uni"> Enterprise</a></li>
             <!-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#menu-admin">Admin</a></li> -->
         </ul>
         <div class="tab-content mt-3">
@@ -376,39 +373,40 @@ use App\Models\BillModel;
                         
                         
                         <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Dashboard</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dashboard';?>"><i class="fa fa-user"></i><span>Dashboard</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Company</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'company';?>"><i class="fa fa-user"></i><span>Company</span></a>
+                            </div>
+                       </li>
+                    
+                       <li class="nav-item">
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'categories';?>"><i class="fa fa-user"></i><span>Categories</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Products</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'products';?>"><i class="fa fa-user"></i><span>Products</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Categories</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'testimonials';?>"><i class="fa fa-user"></i><span>Testmonials</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Testmonials</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'faqs';?>"><i class="fa fa-user"></i><span>Faqs</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Faqs</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'partners';?>"><i class="fa fa-user"></i><span>Partners</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Partners</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'messages';?>"><i class="fa fa-user"></i><span>Messages</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Messages</span></a>
-                            </div>
-                       </li>
-                       <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dsh';?>"><i class="fa fa-user"></i><span>Users</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'users';?>"><i class="fa fa-user"></i><span>Users</span></a>
                             </div>
                        </li>
                        
