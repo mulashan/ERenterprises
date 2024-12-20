@@ -373,40 +373,40 @@
                         
                         
                         <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dashboard';?>"><i class="fa fa-user"></i><span>Dashboard</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'dashboard';?>"><i class="fa fa-dashboard"></i><span>Dashboard</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'company';?>"><i class="fa fa-user"></i><span>Company</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'company';?>"><i class="fa fa-building"></i><span>Company</span></a>
                             </div>
                        </li>
                     
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'categories';?>"><i class="fa fa-user"></i><span>Categories</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'categories';?>"><i class="fa fa-clone"></i><span>Categories</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'products';?>"><i class="fa fa-user"></i><span>Products</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'products';?>"><i class="fa fa-folder"></i><span>Products</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'testimonials';?>"><i class="fa fa-user"></i><span>Testmonials</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'testimonials';?>"><i class="fa fa-wrench"></i><span>Testmonials</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'faqs';?>"><i class="fa fa-user"></i><span>Faqs</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'faqs';?>"><i class="fa fa-scissors"></i><span>Faqs</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'partners';?>"><i class="fa fa-user"></i><span>Partners</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'partners';?>"><i class="fa fa-heart"></i><span>Partners</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'messages';?>"><i class="fa fa-user"></i><span>Messages</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'messages';?>"><i class="fa fa-envelope"></i><span>Messages</span></a>
                             </div>
                        </li>
                        <li class="nav-item">
-                         <div id="">  <a class="nav-link" href="<?php echo base_url().'users';?>"><i class="fa fa-user"></i><span>Users</span></a>
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'users';?>"><i class="fa fa-users"></i><span>Users</span></a>
                             </div>
                        </li>
                        

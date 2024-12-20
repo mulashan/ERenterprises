@@ -76,20 +76,26 @@
 <div class="row clearfix row-deck">
         <?php
         $app=0;
+        helper('Query');
         ?>
 <div class="row clearfix row-deck col-md-12">
   <div class="col-6 col-md-4 col-xl-3">
        <div class="card h-80 d-flex flex-column">
             <div class="card-body ribbon">
-                <div class="ribbon-box orange" data-toggle="tooltip" title="Products">20</div>
+                <div class="ribbon-box orange" data-toggle="tooltip" title="Products"><?php
+                $products=get_data('products_tbl',$where=array('id >'=>0));
+                 echo count($products);
+                 ?></div>
                 <a href="<?php
-                  if($app >0){
-                 echo base_url('products');
+                
+                  if(count($products) >0){
+                 // echo base_url('products');
+                     echo "#";
          }else{
             echo "#";
          }
          ?>" class="nav-link my_sort_cut text-muted">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-folder"></i>
                     <span>Total Products</span>
                 </a>
             </div>
@@ -99,16 +105,19 @@
     <div class="col-6 col-md-4 col-xl-3">
        <div class="card h-80 d-flex flex-column">
             <div class="card-body ribbon">
-                <div class="ribbon-box orange" data-toggle="tooltip" title="Products">20</div>
+                <div class="ribbon-box orange" data-toggle="tooltip" title="Messages"><?php
+                 $msg=get_data('contactus_tbl',$where=array('id >'=>0));
+                 echo count($msg);
+                 ?></div>
                 <a href="<?php
-                  if($app >0){
-                 echo base_url('products');
+                  if(count($msg) >0){
+                 echo '#';
          }else{
             echo "#";
          }
          ?>" class="nav-link my_sort_cut text-muted">
-                    <i class="fa fa-users"></i>
-                    <span>Total Products</span>
+                    <i class="fa fa-envelope"></i>
+                    <span>Total Messages</span>
                 </a>
             </div>
         </div>
@@ -117,16 +126,19 @@
     <div class="col-6 col-md-4 col-xl-3">
        <div class="card h-80 d-flex flex-column">
             <div class="card-body ribbon">
-                <div class="ribbon-box orange" data-toggle="tooltip" title="Products">20</div>
+                <div class="ribbon-box orange" data-toggle="tooltip" title="Categories"><?php
+                 $cat=get_data('categories_tbl',$where=array('id >'=>0));
+                 echo count($cat);
+                 ?></div>
                 <a href="<?php
-                  if($app >0){
-                 echo base_url('products');
+                  if(count($cat) >0){
+                 echo "#";
          }else{
             echo "#";
          }
          ?>" class="nav-link my_sort_cut text-muted">
-                    <i class="fa fa-users"></i>
-                    <span>Total Products</span>
+                    <i class="fa fa-suitcase"></i>
+                    <span>Total Categories</span>
                 </a>
             </div>
         </div>
@@ -135,16 +147,19 @@
     <div class="col-6 col-md-4 col-xl-3">
        <div class="card h-80 d-flex flex-column">
             <div class="card-body ribbon">
-                <div class="ribbon-box orange" data-toggle="tooltip" title="Products">20</div>
+                <div class="ribbon-box orange" data-toggle="tooltip" title="Partners"><?php
+                 $pat=get_data('partners_tbl',$where=array('id >'=>0));
+                 echo count($pat);
+                 ?></div>
                 <a href="<?php
-                  if($app >0){
-                 echo base_url('products');
+                  if(count($pat) >0){
+                 echo "#";
          }else{
             echo "#";
          }
          ?>" class="nav-link my_sort_cut text-muted">
                     <i class="fa fa-users"></i>
-                    <span>Total Products</span>
+                    <span>Total Partners</span>
                 </a>
             </div>
         </div>

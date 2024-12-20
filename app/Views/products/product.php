@@ -82,7 +82,7 @@ helper('Query');
                                         <td><?php echo $res->created_date;?></td>
                                         <td><a href="javascript:void(0)" onclick="edit_category(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
 
-                                            <a href="javascript:void(0)" onclick="view_category(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> View</a>
+                                            <a href="javascript:void(0)" onclick="view_faqs(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                          
                                         </td>
                                         

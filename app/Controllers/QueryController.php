@@ -12,12 +12,10 @@ class QueryController extends BaseController
      ];
 
      $queries = [
-        "ALTER TABLE `categories_tbl` CHANGE `type_name` `category_name` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL",
-      "ALTER TABLE `categories_tbl`  ADD `created_by` INT NOT NULL  AFTER `description`,  ADD `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP  AFTER `created_by`",
-     "ALTER TABLE `products_tbl` CHANGE `type_id` `category_type` INT(11) NOT NULL",
-     "ALTER TABLE `products_tbl` ADD `description` VARCHAR(250) NULL DEFAULT NULL AFTER `image`",
-     "ALTER TABLE `products_tbl`  ADD `created_by` INT NOT NULL  AFTER `description`,  ADD `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP  AFTER `created_by`",
-    
+     // "ALTER TABLE `faqs_tbl`  ADD `created_by` INT NOT NULL  AFTER `answer`,  ADD `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP  AFTER `created_by`",
+        // "ALTER TABLE `testmonials` CHANGE `email` `company_name` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL",
+    "ALTER TABLE `testmonials` ADD `created_by` INT NOT NULL  AFTER `company_name`,  ADD `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP  AFTER `created_by`",
+    "ALTER TABLE `contactus_tbl` ADD `created_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `message`;"
     ];
 
      foreach ($dbs as $db) {

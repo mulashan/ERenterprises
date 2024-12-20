@@ -19,15 +19,15 @@ helper('Query');
             <!---tabs here they go---------------------------->
             <div id="largeScreenTab">
           <ul class="nav nav-tabs page-header-tab">
-                <li class="nav-item"><a class="nav-link active" id="cat-tab" data-toggle="tab" href="#cat-all">Categories List</a></li>
-                <li class="nav-item"><a class="nav-link" id="cat-tab" data-toggle="tab" href="#cat-add">Add Categories</a></li>
+                <li class="nav-item"><a class="nav-link active" id="cat-tab1" data-toggle="tab" href="#<?= $view;?>-all"><?= $view;?> List</a></li>
+                <li class="nav-item"><a class="nav-link" id="cat-tab2" data-toggle="tab" href="#<?= $view;?>-add">Add <?= $view;?></a></li>
             </ul>
              </div>
             <div id="smallScreenTab">
             <ul class="nav nav-tabs page-header-tab">
-                <li class="nav-item"><a class="nav-link active" id="cat-tab" data-toggle="tab" href="#cat-all">Categories</a></li>
+                <li class="nav-item"><a class="nav-link active" id="cat-tab1" data-toggle="tab" href="#<?= $view;?>-all"><?= $view;?> List</a></li>
                 <li></li><li></li>
-                <li class="nav-item"><a class="nav-link" id="cat-tab" data-toggle="tab" href="#cat-add">Add Categories</a></li>
+                <li class="nav-item"><a class="nav-link" id="cat-tab2" data-toggle="tab" href="#<?= $view;?>-add">Add <?= $view;?></a></li>
             </ul>
               
              </div>
@@ -40,7 +40,7 @@ helper('Query');
 <div class="section-body mt-4">
     <div class="container-fluid">
         <div class="tab-content">
-            <div class="tab-pane active" id="cat-all">
+            <div class="tab-pane active" id="<?= $view;?>-all">
 
                 <div class="card">
                     <div class="table-responsive mt-3">
@@ -48,11 +48,11 @@ helper('Query');
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Category Type</th>
-
-                                    <th>Description</th>
-                                    <th>Created By</th>
-                                    <th>created Date</th>
+                                    <th>Comapny Name</th>
+                                    <th>Phone1</th>
+                                    <th>Phone2</th>
+                                    <th>Email</th>
+                                    <th>Logo</th>
                                   <th>Action</th>
                                 </tr>
                             </thead>
@@ -61,16 +61,21 @@ helper('Query');
                                  $i=0;
                                 foreach($result as $res){ 
                                     $i++;
-                                   $results=get_data('users',$where=array('id'=>$res->created_by));
-                                  // print_r($results);
+                                $source = "";
+                                  if($res->logo != ""){
+                                    $source =  base_url('public/web/img/'.$res->logo);
+                                  }
+
                                     ?>
                                    <tr>
                                        <td><?=$i?>.</td>
-                                      <td><?php echo $res->category_name;?></td>
-                                        <td><?php echo $res->description ;?></td>
-                                        <td><?php echo $results[0]->full_name;?></td>
-                                        <td><?php echo $res->created_date;?></td>
-                                        <td><a href="javascript:void(0)" onclick="edit_category(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                      <td><?php echo $res->name;?></td>
+                                      <td><?php echo $res->phone1;?></td>
+                                        <td><?php echo $res->phone2 ;?></td>
+                                        <td><?php echo $res->email ;?></td>
+                                        <td><img src="<?php echo $source; ?>" width="90" height="50"></td>
+                                     
+                                        <td><a href="javascript:void(0)" onclick="edit_company(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
 
                                              <a href="javascript:void(0)" onclick="view_faqs(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                          
@@ -84,35 +89,57 @@ helper('Query');
             </div>
             </div>
             </div>
-            <div class="tab-pane" id="cat-add">
+            <div class="tab-pane" id="<?= $view;?>-add">
         <div class="card">
             <div class="card-header" style="height:5px">
-                <h3 class="card-title">New Category</h3>
+                <h3 class="card-title">New <?= $view;?></h3>
                 <div class="card-options ">
                     <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                 </div>
             </div>
             <hr>
-            <form class="card-body form-horizontal"  id="AddCategory" method="post" enctype="multipart/form-data">
+            <form class="card-body form-horizontal"  id="AddCompany" method="post" enctype="multipart/form-data">
 			<div id="accfbk" class="text-success"></div>
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label">Category Name<span class="text-danger">*</span></label>
+                    <label class="col-md-3 col-form-label">Company Name<span class="text-danger">*</span></label>
                     <div class="col-md-5">
-                        <input type="text" id="c_name" class="form-control" name="c_name"required="required">
-                    <span id="category" class="text-danger"></span>
+                        <input type="text" id="c_name" class="form-control" name="c_name" required="required">
+                    <span id="comp" class="text-danger"></span>
 					</div>
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label">Desription<span class="text-danger">*</span></label>
+                    <label class="col-md-3 col-form-label">Phone 1<span class="text-danger">*</span></label>
                     <div class="col-md-5">
-                        
-                        <textarea name='desc' id='desc' class='form-control' required="required"></textarea>
-                    <span id="dsc" class="text-danger"></span>
-					</div>
+                         <input type="tel" class="form-control" name="phone1" id="phone1" placeholder="+255-xxx-xxx-xxx" value="255" size="20" minlength="9" maxlength="13" required autocomplete="off" data-inputmask="'mask': '999-999999999'">
+                    <span id="phone1" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Phone 2<span class="text-danger">*</span></label>
+                    <div class="col-md-5">
+                        <input type="tel" class="form-control" name="phone2" id="phone2" placeholder="+255-xxx-xxx-xxx" value="255" size="20" minlength="9" maxlength="13" required autocomplete="off" data-inputmask="'mask': '999-999999999'">
+                    <span id="phone2" class="text-danger"></span>
+                    </div>
                 </div>
                 
-              
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Email<span class="text-danger">*</span></label>
+                    <div class="col-md-5">
+                        <input type="email" id="email" class="form-control" name="email" required="required">
+                    <span id="email" class="text-danger"></span>
+                    </div>
+                </div>
+               
+              <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Logo<span class="text-danger">*</span></label>
+                    <div class="col-md-8">
+                        
+                    <img id="output1" style="width:250px;" class="mb-3">
+                          <input type="file" accept="image/*" name="img" onchange="loadFile(event)">
+					</div>
+                </div>
 						
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label"></label>
@@ -164,20 +191,31 @@ helper('Query');
 </div>
 
 <script type="text/javascript">
-   $('#AddCategory').submit(function(e){
-        var Data=$(this).serialize();
+
+var loadFile = function(event) {
+    var output = document.getElementById('output1');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output1.src) // free memory
+    }
+  }; 
+
+   $('#AddCompany').submit(function(e){
+    var form_data = new FormData(this);
+    //alert(form_data);
        
-   // alert(Data);
         $.ajax({
-          url: "<?= base_url('addCategory'); ?>",
+          url: "<?= base_url('addCompany'); ?>",
             type: 'POST',
-            data: Data,
+            data: form_data,
+            contentType: false,
+            processData: false,
          
             success:function(data){
                 if(data==1){
-                    swal("warning","Category is Already added","warning");
+                    swal("warning","Company is Already added","warning");
                 }else{
-                 $("#AddCategory")[0].reset();
+                 $("#AddCompany")[0].reset();
                      $('#accfbk').html(data);
                     setTimeout(function(){
                         window.location.reload();

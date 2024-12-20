@@ -2,7 +2,20 @@
 <?php 
 helper('Query');
 ?>
+<style type="text/css">
+     table {
+        table-layout: relative;
+        width: 100%;
+    }
 
+    .answer {
+        width: 300px;
+        word-wrap: break-word;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal; /* Allows text to wrap onto the next line */
+    }
+</style>
 <div class="section-body">
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-center ">
@@ -19,15 +32,15 @@ helper('Query');
             <!---tabs here they go---------------------------->
             <div id="largeScreenTab">
           <ul class="nav nav-tabs page-header-tab">
-                <li class="nav-item"><a class="nav-link active" id="cat-tab" data-toggle="tab" href="#cat-all">Categories List</a></li>
-                <li class="nav-item"><a class="nav-link" id="cat-tab" data-toggle="tab" href="#cat-add">Add Categories</a></li>
+                <li class="nav-item"><a class="nav-link active" id="cat-tab1" data-toggle="tab" href="#<?= $view;?>-all"><?= $view;?> List</a></li>
+                <li class="nav-item"><a class="nav-link" id="cat-tab2" data-toggle="tab" href="#<?= $view;?>-add">Add <?= $view;?></a></li>
             </ul>
              </div>
             <div id="smallScreenTab">
             <ul class="nav nav-tabs page-header-tab">
-                <li class="nav-item"><a class="nav-link active" id="cat-tab" data-toggle="tab" href="#cat-all">Categories</a></li>
+                <li class="nav-item"><a class="nav-link active" id="cat-tab1" data-toggle="tab" href="#<?= $view;?>-all"><?= $view;?> List</a></li>
                 <li></li><li></li>
-                <li class="nav-item"><a class="nav-link" id="cat-tab" data-toggle="tab" href="#cat-add">Add Categories</a></li>
+                <li class="nav-item"><a class="nav-link" id="cat-tab2" data-toggle="tab" href="#<?= $view;?>-add">Add <?= $view;?></a></li>
             </ul>
               
              </div>
@@ -40,7 +53,7 @@ helper('Query');
 <div class="section-body mt-4">
     <div class="container-fluid">
         <div class="tab-content">
-            <div class="tab-pane active" id="cat-all">
+            <div class="tab-pane active" id="<?= $view;?>-all">
 
                 <div class="card">
                     <div class="table-responsive mt-3">
@@ -48,10 +61,9 @@ helper('Query');
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Category Type</th>
-
-                                    <th>Description</th>
-                                    <th>Created By</th>
+                                    <th>Question</th>
+                                    <th>Answers</th>
+                                     <th>Created By</th>
                                     <th>created Date</th>
                                   <th>Action</th>
                                 </tr>
@@ -62,58 +74,59 @@ helper('Query');
                                 foreach($result as $res){ 
                                     $i++;
                                    $results=get_data('users',$where=array('id'=>$res->created_by));
-                                  // print_r($results);
-                                    ?>
+                                  
+                                       ?>
                                    <tr>
                                        <td><?=$i?>.</td>
-                                      <td><?php echo $res->category_name;?></td>
-                                        <td><?php echo $res->description ;?></td>
-                                        <td><?php echo $results[0]->full_name;?></td>
+                                      <td class="answer"><?php echo $res->question;?></td>
+                                       <td class="answer"><?php echo $res->answer ;?></td>
+                                         <td><?php echo $results[0]->full_name;?></td>
                                         <td><?php echo $res->created_date;?></td>
-                                        <td><a href="javascript:void(0)" onclick="edit_category(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                        <td><a href="javascript:void(0)" onclick="edit_faqs(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
 
-                                             <a href="javascript:void(0)" onclick="view_faqs(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            <a href="javascript:void(0)" onclick="view_faqs(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                          
                                         </td>
                                         
                                     </tr>
                                 <?php } ?>
                             </tbody>
-							</table>
+                            </table>
                                 
             </div>
             </div>
             </div>
-            <div class="tab-pane" id="cat-add">
+            <div class="tab-pane" id="<?= $view;?>-add">
         <div class="card">
             <div class="card-header" style="height:5px">
-                <h3 class="card-title">New Category</h3>
+                <h3 class="card-title">New <?= $view;?></h3>
                 <div class="card-options ">
                     <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                 </div>
             </div>
             <hr>
-            <form class="card-body form-horizontal"  id="AddCategory" method="post" enctype="multipart/form-data">
-			<div id="accfbk" class="text-success"></div>
+            <form class="card-body form-horizontal"  id="AddFaqs" method="post" enctype="multipart/form-data">
+            <div id="accfbk" class="text-success"></div>
+               
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label">Category Name<span class="text-danger">*</span></label>
-                    <div class="col-md-5">
-                        <input type="text" id="c_name" class="form-control" name="c_name"required="required">
-                    <span id="category" class="text-danger"></span>
-					</div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-md-3 col-form-label">Desription<span class="text-danger">*</span></label>
+                    <label class="col-md-3 col-form-label">Question<span class="text-danger">*</span></label>
                     <div class="col-md-5">
                         
-                        <textarea name='desc' id='desc' class='form-control' required="required"></textarea>
-                    <span id="dsc" class="text-danger"></span>
-					</div>
+                        <textarea name='ques' id='ques' class='form-control' placeholder="Enter question"></textarea>
+                    <span id="ques" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Answer<span class="text-danger">*</span></label>
+                    <div class="col-md-5">
+                        
+                        <textarea name='answ' id='answ' class='form-control' placeholder="Enter answer"></textarea>
+                    <span id="answ" class="text-danger"></span>
+                    </div>
                 </div>
                 
               
-						
+                        
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label"></label>
                             <div class="col-md-5">
@@ -164,25 +177,34 @@ helper('Query');
 </div>
 
 <script type="text/javascript">
-   $('#AddCategory').submit(function(e){
-        var Data=$(this).serialize();
+
+var loadFile = function(event) {
+    var output = document.getElementById('output1');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output1.src) // free memory
+    }
+  }; 
+
+   $('#AddFaqs').submit(function(e){
+    var form_data = new FormData(this);
+    //alert(form_data);
        
-   // alert(Data);
         $.ajax({
-          url: "<?= base_url('addCategory'); ?>",
+          url: "<?= base_url('addFaqs'); ?>",
             type: 'POST',
-            data: Data,
+            data: form_data,
+            contentType: false,
+            processData: false,
          
             success:function(data){
-                if(data==1){
-                    swal("warning","Category is Already added","warning");
-                }else{
-                 $("#AddCategory")[0].reset();
+               
+                 $("#AddFaqs")[0].reset();
                      $('#accfbk').html(data);
                     setTimeout(function(){
                         window.location.reload();
                     },1500)
-                }
+                
             },
             error:function(){
                 $('#accfbk').html('<div class="alert alert-danger alert-dismissible" role="alert"><strong>Sorry! Something went wrong!</strong> Couldnt Save Company.<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>');
