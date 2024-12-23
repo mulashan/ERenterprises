@@ -119,6 +119,52 @@ function addCompany(){
             
     }
 
-   
+    function edit_product($id){
+ $data['item']=$this->pmodel->gettable_data('products_tbl',$where=array('id'=>$id));
+  return view('products/forms/product_edit',$data);
+    }
+
+    function update_product(){
+      
+        $validate_data = [
+            'product_name' => 'required|min_length[3]|max_length[255]',
+            'category_type' => 'required',
+           
+            ];
+           
+            if ($this->validate($validate_data)){
+              
+                $img = $this->request->getFile('image');
+                $img1 = $this->request->getPost('image1');
+                $img_name = "";
+
+             if($img!=""){
+                if($img->isValid() && !$img->hasMoved()){
+                    $img_name = $img->getName();
+                    $img->move(ROOTPATH.'public/web/img/',$img_name);
+                }else{
+             return '<div class="alert alert-warning alert-dismissible" role="alert"><strong>Invalid Image.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>'; 
+                }
+            }else{
+              $img_name=$img1; 
+            }
+
+                $data = [
+                    'product_name' => ucfirst($this->request->getPost('product_name')),
+                    'category_type' => $this->request->getPost('category_type'),
+                    'description' => ucfirst($this->request->getPost('description')),
+                    'image' =>$img_name,
+                    // 'created_by' => session()->get('user_id'),
+                    // 'created_date' => date('Y-m-d H:i:s'),
+                  
+                ];
+               $id=$this->request->getPost('id');
+                $this->pmodel->editDetails('products_tbl',$data,$id);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Updated successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+            
+              }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
+    }
 //>>>end here >>>>>
 }

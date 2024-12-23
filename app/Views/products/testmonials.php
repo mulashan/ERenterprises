@@ -84,9 +84,9 @@ helper('Query');
                                        <td class="answer"><?php echo $res->message ;?></td>
                                          <td><?php echo $results[0]->full_name;?></td>
                                         <td><?php echo $res->created_date;?></td>
-                                        <td><a href="javascript:void(0)" onclick="edit_faqs(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                                       <td><a href="javascript:void(0)" onclick="edit_item(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
 
-                                            <a href="javascript:void(0)" onclick="view_faqs(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                            <a href="javascript:void(0)" onclick="delete_item(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                                          
                                         </td>
                                         
@@ -126,9 +126,9 @@ helper('Query');
                 </div>
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">Message<span class="text-danger">*</span></label>
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         
-                        <textarea name='message' id='message' class='form-control' placeholder="Enter message"></textarea>
+                        <textarea name='message' id='message' class='form-control' placeholder="Enter message" rows="10"></textarea>
                     <span id="message" class="text-danger"></span>
                     </div>
                 </div>
@@ -151,48 +151,24 @@ helper('Query');
         </div>
     </div>
 </div>
-<div class="modal fade" id="EditCompany" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="EditItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content" style="width:900px;margin-left: 100px;">
       <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel"><center>Edit Category Details</center></h5>
+          <h5 class="modal-title" id="staticBackdropLabel"><center>Edit Testmonial Details</center></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body" id="EditCompany_content">
+      <div class="modal-body" id="EditItem_content">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!--<button type="button" class="btn btn-primary">Save</button>-->
+        
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="viewCompany" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content" style="width:900px;margin-left: 100px;">
-      <div class="modal-header">
-         <!--  <h5 class="modal-title" id="staticBackdropLabel"><center>view Company Details</center></h5> -->
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body" id="viewCompany_content">
-      </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>--
-      </div> -->
-    </div>
-  </div>
-</div>
-
 <script type="text/javascript">
 
-var loadFile = function(event) {
-    var output = document.getElementById('output1');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output1.src) // free memory
-    }
-  }; 
 
    $('#AddTestmonial').submit(function(e){
     var form_data = new FormData(this);
@@ -221,39 +197,16 @@ var loadFile = function(event) {
         
         e.preventDefault();
     }); 
-    function edit_company(id){
+   function edit_item(id){
         
-        $('#EditCompany').modal('show'); 
-        $('#EditCompany_content').load('edit_company/'+id);
+        $('#EditItem').modal('show'); 
+        $('#EditItem_content').load('edit_testimonial/'+id);
        
     } 
-    var loadFile = function(event) {
-    var output = document.getElementById('output1');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output1.src) // free memory
-    }
-  }; 
 
- function view_company(id){
-        
-        $('#viewCompany').modal('show'); 
-        $('#viewCompany_content').load('view_company/'+id);
-       
-    } 
-    var loadFile = function(event) {
-    var output = document.getElementById('output1');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output1.src) // free memory
-    }
-  }; 
-  $(".deleteID").click(function(){
-
-        var id = $(this).attr('data-id');
-        //alert (id);
-      
-           swal({
+    function delete_item(id){
+           var tbl="testmonials";
+            swal({
             title: "Are you sure?",
             text: "You will not be able to recover this item!",
             // type: "warning",
@@ -269,13 +222,15 @@ var loadFile = function(event) {
 
           function(isConfirm) {
             if (isConfirm) {
+            var dt="id="+id+"&tbl="+tbl;
               $.ajax({
-                 url: '<?= base_url('/deleteCompany')?>/'+id,
+                url: "<?= base_url('deleteItem'); ?>",
+            type: 'POST',
+            data: dt,
                  error: function() {
                     alert('Something is wrong');
                  },
                  success: function(data) {
-                      // $("#"+id).remove();
                      
                     swal("Deleted!", "Item deleted.", "success");
                     location.reload(true);
@@ -288,6 +243,6 @@ var loadFile = function(event) {
             }
 
           });
+        }
 
-    });
 </script>

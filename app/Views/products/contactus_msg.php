@@ -67,6 +67,7 @@ helper('Query');
                                     <th>Country</th>
                                     <th>Message</th>
                                     <th>created Date</th>
+                                    <th>Action</th>
                                  
                                 </tr>
                             </thead>
@@ -87,7 +88,9 @@ helper('Query');
                                         
                                         <td><?php echo $res->created_date;?></td>
                                         
-                                        
+                                        <td>
+                                            <a href="javascript:void(0)" onclick="delete_item(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -104,14 +107,6 @@ helper('Query');
 
 
 <script type="text/javascript">
-
-var loadFile = function(event) {
-    var output = document.getElementById('output1');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output1.src) // free memory
-    }
-  }; 
 
    $('#AddTestmonial').submit(function(e){
     var form_data = new FormData(this);
@@ -140,39 +135,10 @@ var loadFile = function(event) {
         
         e.preventDefault();
     }); 
-    function edit_company(id){
-        
-        $('#EditCompany').modal('show'); 
-        $('#EditCompany_content').load('edit_company/'+id);
-       
-    } 
-    var loadFile = function(event) {
-    var output = document.getElementById('output1');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output1.src) // free memory
-    }
-  }; 
 
- function view_company(id){
-        
-        $('#viewCompany').modal('show'); 
-        $('#viewCompany_content').load('view_company/'+id);
-       
-    } 
-    var loadFile = function(event) {
-    var output = document.getElementById('output1');
-    output.src = URL.createObjectURL(event.target.files[0]);
-    output.onload = function() {
-      URL.revokeObjectURL(output1.src) // free memory
-    }
-  }; 
-  $(".deleteID").click(function(){
-
-        var id = $(this).attr('data-id');
-        //alert (id);
-      
-           swal({
+   function delete_item(id){
+           var tbl="contactus_tbl";
+            swal({
             title: "Are you sure?",
             text: "You will not be able to recover this item!",
             // type: "warning",
@@ -188,13 +154,15 @@ var loadFile = function(event) {
 
           function(isConfirm) {
             if (isConfirm) {
+            var dt="id="+id+"&tbl="+tbl;
               $.ajax({
-                 url: '<?= base_url('/deleteCompany')?>/'+id,
+                url: "<?= base_url('deleteItem'); ?>",
+            type: 'POST',
+            data: dt,
                  error: function() {
                     alert('Something is wrong');
                  },
                  success: function(data) {
-                      // $("#"+id).remove();
                      
                     swal("Deleted!", "Item deleted.", "success");
                     location.reload(true);
@@ -207,6 +175,5 @@ var loadFile = function(event) {
             }
 
           });
-
-    });
+        }
 </script>

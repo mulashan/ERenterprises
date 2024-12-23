@@ -410,6 +410,7 @@
                             </div>
                        </li>
                        
+                       
                         <?php
                           ?>
                        
@@ -473,8 +474,8 @@
                                      
                                     <?php print_r($_SESSION['full_name']); ?></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item profile" href="<?= base_url('profile_edit'); ?>/<?= session()->get('id');?>" data-id="">Profile</a>
-                                    <div class="dropdown-divider"></div>
+                                   <!--  <a class="dropdown-item profile" href="<?= base_url('profile_edit'); ?>/<?= session()->get('id');?>" data-id="">Profile</a>
+                                    <div class="dropdown-divider"></div> -->
                                     <a class="dropdown-item" href="<?php echo base_url('/Logout');?>"><i class="dropdown-icon fe fe-log-out"></i> Sign out</a>
                                 </div>
                             </div>

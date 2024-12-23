@@ -22,5 +22,24 @@ class ProductsModel extends Model
         $this->db->close();
         return $builder;
     }
+
+    function deleteDetails($tbl,$id){
+    $builder=$this->db->table($tbl);
+    $builder->where('id',$id);
+    $builder->delete();
+    }
+
+   function editDetails($tbl,$data,$id){
+      $builder = $this->db->table($tbl);
+            $builder->where('id',$id);
+            $builder->update($data);
+            $this->db->close();
+   }
+
+function get_max_update($tbl,$col){
+     $builder = $this->db->table($tbl);
+    $builder->select('MAX(CAST('.$col.' AS UNSIGNED)) AS max_id');
+    return $builder->get()->getResult();
+  }
 //end end
 }

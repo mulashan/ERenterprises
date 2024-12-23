@@ -172,7 +172,7 @@ function addTestimonial(){
 
     function contactus_msg(){
    $data=array(
-            'view'=>'Contactus Messages',
+            'view'=>'Contact us Messages',
             'result'=>$this->pmodel->gettable_data('contactus_tbl ',$where=array('id >'=>0),),
           );
         return view('admin/header')
@@ -222,6 +222,236 @@ function addUsers(){
                 return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
             }
             
+    }
+
+    function itemToDelete(){
+        $id=$this->request->getPost('id');
+        $tbl=$this->request->getPost('tbl');
+        $this->pmodel->deleteDetails($tbl,$id);
+    }
+
+    function edit_company($id){
+ $data['item']=$this->pmodel->gettable_data('company_tbl',$where=array('id'=>$id));
+  return view('products/forms/company_edit',$data);
+    }
+
+    function update_company(){
+      
+        $validate_data = [
+            'name' => 'required|min_length[3]|max_length[255]',
+            'phone1' => 'required|min_length[13]|max_length[13]',
+            'phone2' => 'required|min_length[13]|max_length[13]',
+            'email' => 'required|valid_email',
+           
+            ];
+           
+            if ($this->validate($validate_data)){
+              
+                $img = $this->request->getFile('logo');
+                $img1 = $this->request->getPost('logo1');
+                $img_name = "";
+
+             if($img!=""){
+                if($img->isValid() && !$img->hasMoved()){
+                    $img_name = $img->getName();
+                    $img->move(ROOTPATH.'public/web/img/',$img_name);
+                }else{
+             return '<div class="alert alert-warning alert-dismissible" role="alert"><strong>Invalid Image.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>'; 
+                }
+            }else{
+              $img_name=$img1; 
+            }
+
+                $data = [
+                    'name' => ucfirst($this->request->getPost('name')),
+                    'phone1' => $this->request->getPost('phone1'),
+                    'phone2' => $this->request->getPost('phone2'),
+                    'email' => $this->request->getPost('email'),
+                    'logo' =>$img_name,
+                  
+                ];
+               $id=$this->request->getPost('id');
+                $this->pmodel->editDetails('company_tbl',$data,$id);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Updated successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+            
+              }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
+    }
+
+    function edit_category($id){
+        $data['item']=$this->pmodel->gettable_data('categories_tbl',$where=array('id'=>$id));
+  return view('products/forms/category_edit',$data);
+    }
+
+    function update_category(){
+      
+        $validate_data = [
+            'category_name' => 'required|min_length[3]|max_length[255]',
+            'description' => 'required|min_length[3]',
+           
+            ];
+           
+            if ($this->validate($validate_data)){
+              
+            $data = [
+                    'category_name' => ucfirst($this->request->getPost('category_name')),
+                    'description' => ucfirst($this->request->getPost('description')),
+                    // 'created_by' => session()->get('user_id'),
+                    // 'created_date' => date('Y-m-d H:i:s'),
+                  
+                     ];
+               $id=$this->request->getPost('id');
+                $this->pmodel->editDetails('categories_tbl',$data,$id);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Updated successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+            
+              }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
+    }
+
+   function edit_testimonial($id){
+    $data['item']=$this->pmodel->gettable_data('testmonials',$where=array('id'=>$id));
+  return view('products/forms/testimonial_edit',$data);
+   }
+
+    function update_testimonial(){
+      
+        $validate_data = [
+            'person_name' => 'required|min_length[3]|max_length[255]',
+            'message' => 'required',
+           
+            ];
+           
+            if ($this->validate($validate_data)){
+              
+            $data = [
+                     'person_name' => ucfirst($this->request->getPost('person_name')),
+                    'message' => $this->request->getPost('message'),
+                    'company_name' =>$this->request->getPost('company_name'),
+                   
+                    ];
+               $id=$this->request->getPost('id');
+                $this->pmodel->editDetails('testmonials',$data,$id);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Updated successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+            
+              }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
+    }
+
+     function edit_faq($id){
+    $data['item']=$this->pmodel->gettable_data('faqs_tbl',$where=array('id'=>$id));
+  return view('products/forms/faq_edit',$data);
+   }
+
+    function update_faq(){
+      
+        $validate_data = [
+            'question' => 'required|min_length[3]|max_length[255]',
+            'answer' => 'required|min_length[3]',
+           
+            ];
+           
+            if ($this->validate($validate_data)){
+              
+            $data = [
+                    'question' => ucfirst($this->request->getPost('question')),
+                    'answer' => ucfirst($this->request->getPost('answer')),
+                   
+                    ];
+               $id=$this->request->getPost('id');
+                $this->pmodel->editDetails('faqs_tbl',$data,$id);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Updated successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+            
+              }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
+    }
+
+    function edit_patner($id){
+ $data['item']=$this->pmodel->gettable_data('partners_tbl',$where=array('id'=>$id));
+  return view('products/forms/patner_edit',$data);
+    }
+
+    function update_patner(){
+      
+        $validate_data = [
+            'name' => 'required|min_length[3]|max_length[255]',
+            'email' => 'required|valid_email',
+           
+            ];
+           
+            if ($this->validate($validate_data)){
+              
+                $img = $this->request->getFile('logo');
+                $img1 = $this->request->getPost('logo1');
+                $img_name = "";
+
+             if($img!=""){
+                if($img->isValid() && !$img->hasMoved()){
+                    $img_name = $img->getName();
+                    $img->move(ROOTPATH.'public/web/img/',$img_name);
+                }else{
+             return '<div class="alert alert-warning alert-dismissible" role="alert"><strong>Invalid Image.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>'; 
+                }
+            }else{
+              $img_name=$img1; 
+            }
+
+                $data = [
+                     'name' => ucfirst($this->request->getPost('name')),
+                    'email' => $this->request->getPost('email'),
+                    'logo' =>$img_name,
+                  
+                ];
+               $id=$this->request->getPost('id');
+                $this->pmodel->editDetails('partners_tbl',$data,$id);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Updated successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+            
+              }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
+    }
+
+    function edit_user($id){
+ $data['item']=$this->pmodel->gettable_data('users',$where=array('id'=>$id));
+  return view('products/forms/user_edit',$data);
+    }
+
+     function update_user(){
+      
+        $validate_data = [
+            'full_name' => 'required|min_length[3]|max_length[255]',
+            'username' => 'required|min_length[3]|max_length[255]',
+            'password' => 'required|min_length[3]|max_length[255]',
+            'cpassword' => 'required|min_length[3]|max_length[255]',
+           
+            ];
+           
+            if ($this->validate($validate_data)){
+
+             $id=$this->request->getPost('id'); 
+            $user=$this->pmodel->gettable_data('users ',$where=array('username'=>$this->request->getPost('username'),'id !='=>$id),);
+            if(count($user)>0){
+             return '<div class="alert alert-warning alert-dismissible" role="alert"><strong>This username is arleady taken.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+                }
+               if($this->request->getPost('password')!=$this->request->getPost('cpassword')){
+              return '<div class="alert alert-warning alert-dismissible" role="alert"><strong>Password mismatch!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+               } 
+
+                $data = [
+                    'full_name' => $this->request->getPost('full_name'),
+                    'username' => $this->request->getPost('username'),
+                    'password' =>$this->request->getPost('password'),
+                    
+                     ];
+                $this->pmodel->editDetails('users',$data,$id);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Updated successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+            
+              }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
     }
 //>>>end here >>>>>
 
