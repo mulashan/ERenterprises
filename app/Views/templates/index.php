@@ -4,7 +4,7 @@
 ?>
 <div class="header-carousel owl-carousel">
     <div class="header-carousel-item">
-        <img src="public/web/img/home_picture1.jpg" class="img-fluid w-100" alt="Image">
+        <img src="public/web/img/home_picture3.jpg" class="img-fluid w-100" alt="Image">
         <div class="carousel-caption">
             <div class="container">
                 <div class="row gy-0 gx-5">
@@ -13,7 +13,7 @@
                         <div class="text-sm-center text-md-end">
                             <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome <?= $company_details->name; ?></h4>
                             <h1 class="display-4 text-uppercase text-white mb-4">Connecting you to global style</h1>
-                            <p class="mb-5 fs-5">Based in Dar es Salaam, Tanzania, E&R Enterprise we are a trusted business with over four years of experience in sourcing furniture and electronics from China. We specialize in managing the entire process—receiving customer orders, purchasing, transporting, and distributing high-quality products across East Africa....
+                            <p class="mb-5 fs-5">Based in Dar es Salaam, Tanzania, <?= $company_details->name; ?> we are a trusted business with over four years of experience in sourcing furniture and electronics from China. We specialize in managing the entire process—receiving customer orders, purchasing, transporting, and distributing high-quality products across East Africa....
                             </p>
                             <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
                                 <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
@@ -114,7 +114,7 @@
             </div>
             <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
                 <div class="bg-primary rounded position-relative overflow-hidden">
-                    <img src="public/web/img/home_min_picture1.jpg" class="img-fluid rounded w-100" alt="">
+                    <img src="public/web/img/office-2.png" class="img-fluid rounded w-100" alt="">
                     
                     <!-- <div class="" style="position: absolute; top: -15px; right: -15px;">
                         <img src="public/web/img/home_min-3.jpg" class="img-fluid" style="width: 150px; height: 150px; opacity: 0.7;" alt="">
@@ -123,7 +123,7 @@
                         <img src="public/web/img/home_min-3.jpg" class="img-fluid" style="width: 100px; height: 150px; opacity: 0.9;" alt="">
                     </div> -->
                     <div class="rounded-bottom">
-                        <img src="public/web/img/home_min_picture4.jpg" class="img-fluid rounded-bottom w-100" alt="">
+                        <img src="public/web/img/living-room-2.png" class="img-fluid rounded-bottom w-100" alt="">
                     </div>
                 </div>
             </div>
@@ -142,6 +142,7 @@
         <div class="row g-4">
             <?php 
                 $categories = $model->getCategories();
+                if(!empty($categories)){
                 foreach ($categories as $category) {
             ?>
 
@@ -157,7 +158,7 @@
                     </div>
                 </div>
             </div>
-            <?php } ?>
+            <?php } } ?>
         </div>
     </div>
 </div>
@@ -165,7 +166,7 @@
 
 
     <!-- FAQs Start -->
-<div class="container-fluid faq-section pb-5">
+<div class="container-fluid faq-section pb-5" id="faqs">
     <div class="container pb-5 overflow-hidden">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
             <h4 class="text-primary">FAQs</h4>
@@ -176,71 +177,28 @@
         <div class="row g-5 align-items-center">
             <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.2s">
                 <div class="accordion accordion-flush bg-light rounded p-5" id="accordionFlushSection">
+
+                    <?php 
+                    $faqs = $model->getAllFaqs(); 
+                    if(!empty($faqs)){
+                        foreach($faqs as $faq){
+                    ?>
                     <div class="accordion-item rounded-top">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed rounded-top" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            What Does This Tool Do?
+                        <h2 class="accordion-header" id="flush-heading<?= $faq->id; ?>">
+                            <button class="accordion-button collapsed rounded-top" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?= $faq->id; ?>" aria-expanded="false" aria-controls="flush-collapse<?= $faq->id; ?>">
+                            <?= $faq->question; ?>
                             </button>
                         </h2>
-                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushSection">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                        <div id="flush-collapse<?= $faq->id; ?>" class="accordion-collapse collapse" aria-labelledby="flush-heading<?= $faq->id; ?>" data-bs-parent="#accordionFlushSection">
+                            <div class="accordion-body"><?= $faq->answer; ?></div>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            What Are The Disadvantages Of Online Trading?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushSection">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            Is Online Trading Safe?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushSection">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            What Is Online Trading, And How Dose It Work?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushSection">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                            Which App Is Best For Online Trading?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushSection">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                        </div>
-                    </div>
-                    <div class="accordion-item rounded-bottom">
-                        <h2 class="accordion-header" id="flush-headingSix">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                            How To Create A Trading Account?
-                            </button>
-                        </h2>
-                        <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushSection">
-                            <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                        </div>
-                    </div>
+                     <?php } } ?>
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s">
                 <div class="bg-primary rounded">
-                    <img src="public/web/img/about-2.png" class="img-fluid w-100" alt="">
+                    <img src="public/web/img/faq-image-2.jpg" class="img-fluid w-100" alt="">
                 </div>
             </div>
         </div>
@@ -250,30 +208,35 @@
 
 
 <!-- Testimonial Start -->
-<div class="container-fluid testimonial pb-5">
+<div class="container-fluid testimonial pb-5" id="testimonies">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
             <h4 class="text-primary">Testimonial</h4>
-            <h1 class="display-5 mb-4">Our Clients Riviews</h1>
-            <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
+            <h1 class="display-5 mb-4">Our Clients Reviews</h1>
+            <p class="mb-0">With a proven track record, a tradition for excellence and always going the extra mile for out customers, we aim to meet and exceed our customers expectations every time.
             </p>
         </div>
         <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.2s">
-            <div class="testimonial-item">
+            <?php 
+                $testimonies = $model->getAllTestimonies();
+                if(!empty($testimonies)){
+                    foreach ($testimonies   as $testimony){
+            ?>
+                <div class="testimonial-item">
                 <div class="testimonial-quote-left">
                     <i class="fas fa-quote-left fa-2x"></i>
                 </div>
                 <div class="testimonial-img">
-                    <img src="public/web/img/testimonial-1.jpg" class="img-fluid" alt="Image">
+                    <img src="public/web/img/user.jpg" class="img-fluid" alt="Image">
                 </div>
                 <div class="testimonial-text">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum accusamus.
+                    <p class="mb-0"><?= $testimony->message; ?>
                     </p>
                 </div>
                 <div class="testimonial-title">
                     <div>
-                        <h4 class="mb-0">Person Name</h4>
-                        <p class="mb-0">Profession</p>
+                        <h4 class="mb-0"><?= $testimony->person_name; ?></h4>
+                        <p class="mb-0"><?= $testimony->company_name; ?></p>
                     </div>
                     <div class="d-flex text-primary">
                         <i class="fas fa-star"></i>
@@ -287,90 +250,7 @@
                     <i class="fas fa-quote-right fa-2x"></i>
                 </div>
             </div>
-            <div class="testimonial-item">
-                <div class="testimonial-quote-left">
-                    <i class="fas fa-quote-left fa-2x"></i>
-                </div>
-                <div class="testimonial-img">
-                    <img src="public/web/img/testimonial-2.jpg" class="img-fluid" alt="Image">
-                </div>
-                <div class="testimonial-text">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum accusamus.
-                    </p>
-                </div>
-                <div class="testimonial-title">
-                    <div>
-                        <h4 class="mb-0">Person Name</h4>
-                        <p class="mb-0">Profession</p>
-                    </div>
-                    <div class="d-flex text-primary">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-quote-right">
-                    <i class="fas fa-quote-right fa-2x"></i>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-quote-left">
-                    <i class="fas fa-quote-left fa-2x"></i>
-                </div>
-                <div class="testimonial-img">
-                    <img src="public/web/img/testimonial-3.jpg" class="img-fluid" alt="Image">
-                </div>
-                <div class="testimonial-text">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum accusamus.
-                    </p>
-                </div>
-                <div class="testimonial-title">
-                    <div>
-                        <h4 class="mb-0">Person Name</h4>
-                        <p class="mb-0">Profession</p>
-                    </div>
-                    <div class="d-flex text-primary">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-quote-right">
-                    <i class="fas fa-quote-right fa-2x"></i>
-                </div>
-            </div>
-            <div class="testimonial-item">
-                <div class="testimonial-quote-left">
-                    <i class="fas fa-quote-left fa-2x"></i>
-                </div>
-                <div class="testimonial-img">
-                    <img src="public/web/img/testimonial-2.jpg" class="img-fluid" alt="Image">
-                </div>
-                <div class="testimonial-text">
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis blanditiis excepturi quisquam temporibus voluptatum reprehenderit culpa, quasi corrupti laborum accusamus.
-                    </p>
-                </div>
-                <div class="testimonial-title">
-                    <div>
-                        <h4 class="mb-0">Person Name</h4>
-                        <p class="mb-0">Profession</p>
-                    </div>
-                    <div class="d-flex text-primary">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                <div class="testimonial-quote-right">
-                    <i class="fas fa-quote-right fa-2x"></i>
-                </div>
-            </div>
+            <?php } } ?>
         </div>
     </div>
 </div>
