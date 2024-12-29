@@ -17,6 +17,36 @@ helper('Query');
                      </div>
                    </div>
 
+                   <?php
+                 $menus=get_data('web_menu_tbl',$where=array('menu_nature'=>2));
+                ?>
+                 <div class="form-group row">
+                    <label class="col-md-2 col-form-label">Menu<span class="text-danger">*</span></label>
+                    <div class="col-md-5">
+                        <select name='menu' class='form-control form-select'>
+                       <option value="">-choose-</option>
+                       <?php
+                       if(count($menus)>0){
+                      foreach($menus as $menu){
+                       ?>
+                     <option value='<?= $menu->id;?>'
+                        <?php if($item[0]->menu_id==$menu->id){ echo "selected";} ?> ><?= $menu->menu_name;?></option>
+                       <?php
+                        }
+                       }
+                       ?>
+                      </select>
+                    </div>
+                </div>
+
+                 <div class="form-group row mb-3">
+                     <label class="col-md-2 col-form-label"> Route Name</label>
+                     <div class="col-md-5">
+                         <input type="text" class="form-control" name="route" placeholder="Enter route name" autocomplete="off" value="<?= $item[0]->route;?>">
+                        
+                     </div>
+                   </div>
+
                 <div class="form-group row mb-3">
                      <label class="col-md-2 col-form-label"> Description</label>
                      <div class="col-md-10">
@@ -25,6 +55,16 @@ helper('Query');
                      </div>
                    </div>
                  
+                 <div class="form-group row mb-3">
+                     <label class="col-md-2 col-form-label"> Image</label>
+                     <div class="col-md-5">
+                        <img src= "<?php echo base_url('public/web/img/'.$item[0]->image);?> " id="showImage" style="width:120px;" alt="select image">
+                          <input type="file" accept="image/*" name="image" onchange="loadedFile(event)" class="mt-3">
+                          
+                         <input type="hidden" class="form-control" name="image1" value="<?=$item[0]->image;?>" required=""> 
+                     </div>
+                   </div>
+                   
                  <div class="form-group row mb-3">
                   
                   <div class="col-md-4 offset-md-4">
@@ -38,7 +78,7 @@ helper('Query');
     </div>
 </div>
 <script>
-     var loadedFile = function(event) {
+    var loadedFile = function(event) {
     var output = document.getElementById('showImage');
     output.src = URL.createObjectURL(event.target.files[0]);
     output.onload = function() {

@@ -409,6 +409,10 @@
                          <div id="">  <a class="nav-link" href="<?php echo base_url().'users';?>"><i class="fa fa-users"></i><span>Users</span></a>
                             </div>
                        </li>
+                       <li class="nav-item">
+                         <div id="">  <a class="nav-link" href="<?php echo base_url().'web_menu';?>"><i class="fa fa-registered"></i><span>Web Menu</span></a>
+                            </div>
+                       </li>
                        
                        
                         <?php

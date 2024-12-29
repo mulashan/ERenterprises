@@ -63,6 +63,9 @@ helper('Query');
                                 <tr>
                                     <th>#</th>
                                     <th>Category Type</th>
+                                    <th>Menu Name</th>
+                                    <th>Route name</th>
+                                    <th>Image</th>
 
                                     <th>Description</th>
                                     <th>Created By</th>
@@ -76,19 +79,27 @@ helper('Query');
                                 foreach($result as $res){ 
                                     $i++;
                                    $results=get_data('users',$where=array('id'=>$res->created_by));
+                                   $menu=get_data('web_menu_tbl',$where=array('id'=>$res->menu_id));
                                   // print_r($results);
+                                 $source = "";
+                                  if($res->image != ""){
+                                    $source =  base_url('public/web/img/'.$res->image);
+                                  }
                                     ?>
                                    <tr>
-                                       <td><?=$i?>.</td>
-                                      <td><?php echo $res->category_name;?></td>
-                                        <td class="answer"><?php echo $res->description ;?></td>
-                                        <td><?php echo $results[0]->full_name;?></td>
-                                        <td><?php echo $res->created_date;?></td>
-                                        <td><a href="javascript:void(0)" onclick="edit_item(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                   <td><?=$i?>.</td>
+                  <td><?php echo $res->category_name;?></td>
+                  <td><?php echo $menu[0]->menu_name??"";?></td>
+                  <td><?php echo $res->route;?></td>
+                   <td><img src="<?php echo $source; ?>" width="90" height="50"></td>
+                    <td class="answer"><?php echo $res->description ;?></td>
+                    <td><?php echo $results[0]->full_name;?></td>
+                    <td><?php echo $res->created_date;?></td>
+                    <td><a href="javascript:void(0)" onclick="edit_item(<?php echo $res->id;?>)"  class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
 
-                                             <a href="javascript:void(0)" onclick="delete_item(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
-                                         
-                                        </td>
+                         <a href="javascript:void(0)" onclick="delete_item(<?php echo $res->id;?>)"  class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                     
+                    </td>
                                         
                                     </tr>
                                 <?php } ?>
@@ -112,9 +123,37 @@ helper('Query');
                 <div class="form-group row">
                     <label class="col-md-3 col-form-label">Category Name<span class="text-danger">*</span></label>
                     <div class="col-md-5">
-                        <input type="text" id="c_name" class="form-control" name="c_name"required="required">
+                        <input type="text" id="c_name" class="form-control" name="c_name"required="required" placeholder="Enter Category Name">
                     <span id="category" class="text-danger"></span>
 					</div>
+                </div>
+                <?php
+                 $menus=get_data('web_menu_tbl',$where=array('menu_nature'=>2));
+                ?>
+                 <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Menu<span class="text-danger">*</span></label>
+                    <div class="col-md-5">
+                        <select name='menu' class='form-control form-select'>
+                       <option value="">-choose-</option>
+                       <?php
+                       if(count($menus)>0){
+                      foreach($menus as $menu){
+                       ?>
+                     <option value='<?= $menu->id;?>'><?= $menu->menu_name;?></option>
+                       <?php
+                        }
+                       }
+                       ?>
+                      </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Route Name<span class="text-danger">*</span></label>
+                    <div class="col-md-5">
+                        <input type="text" id="route" class="form-control" name="route" required="required" placeholder="Enter route name">
+                   
+                    </div>
                 </div>
 
                 <div class="form-group row">
@@ -126,7 +165,14 @@ helper('Query');
 					</div>
                 </div>
                 
-              
+              <div class="form-group row mb-3">
+                    <label class="col-md-3 col-form-label">Image<span class="text-danger">*</span></label>
+                    <div class="col-md-8">
+                        
+                    <img id="output1" style="width:250px;" class="mb-3">
+                          <input type="file" accept="image/*" name="img" onchange="loadFile(event)">
+                    </div>
+                </div>
 						
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label"></label>
@@ -162,14 +208,24 @@ helper('Query');
 </div>
 
 <script type="text/javascript">
+    var loadFile = function(event) {
+    var output = document.getElementById('output1');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output1.src) // free memory
+    }
+  }; 
+
    $('#AddCategory').submit(function(e){
-        var Data=$(this).serialize();
+        var Data=new FormData(this);
        
    // alert(Data);
         $.ajax({
           url: "<?= base_url('addCategory'); ?>",
             type: 'POST',
             data: Data,
+            contentType: false,
+            processData: false,
          
             success:function(data){
                 if(data==1){

@@ -166,5 +166,47 @@ function addCompany(){
                 return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
             }
     }
+ function web_menu(){
+    $data=array(
+            'view'=>'Menu',
+            'result'=>$this->pmodel->gettable_data('web_menu_tbl',$where=array('id >'=>0),),
+          );
+        return view('admin/header')
+        .view('products/website_menu',$data)
+        .view('admin/footer'); 
+}
+
+function add_menu(){
+      
+        $validate_data = [
+            'menu_name' => 'required|min_length[3]|max_length[255]',
+            'nature' => 'required',
+            ];
+           
+            if ($this->validate($validate_data)){
+              
+                if($this->request->getPost('nature')==1){
+                $path=$this->request->getPost('path');
+                $path_nature=$this->request->getPost('path_nature');
+                }else{
+                 $path=0;
+                 $path_nature=0;
+                }
+                $data = [
+                    'menu_name' => $this->request->getPost('menu_name'),
+                    'menu_nature' => $this->request->getPost('nature'),
+                    'path_name' => $path,
+                    'path_nature' => $path_nature,
+                    
+                ];
+                
+                $this->pmodel->SaveDetails('web_menu_tbl',$data);
+                return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Saved successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+           
+            }else{
+                return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
+            }
+            
+    }
 //>>>end here >>>>>
 }

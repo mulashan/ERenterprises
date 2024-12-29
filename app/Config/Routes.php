@@ -44,4 +44,10 @@ $routes->post('update_patner', 'ContentController::update_patner');
 $routes->get('edit_user/(:num)', 'ContentController::edit_user/$1');
 $routes->post('update_user', 'ContentController::update_user');
 
+$routes->get('contact', 'Home::contact');
+$routes->post('send_message', 'Home::get_message');
+$routes->get('web_menu', 'ProductController::web_menu');
+$routes->post('add_menu', 'ProductController::add_menu');
+
+
 
