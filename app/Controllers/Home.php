@@ -3,6 +3,9 @@
 namespace App\Controllers;
 use App\Models\ProductsModel;
 
+// use CodeIgnitor\Controller;
+use App\Models\WebModel;
+
 class Home extends BaseController
 {
 
@@ -14,7 +17,11 @@ class Home extends BaseController
 
     public function index()
     {
-        return view('templates/header')
+    
+        $company = new WebModel();
+        $details = $company->company_info();
+        $data['company_details'] = $details;
+        return view('templates/header',$data)
                 .view('templates/index')
                 .view('templates/footer');
     }
@@ -24,7 +31,10 @@ class Home extends BaseController
     }
 
     public function contact(){
-      return view('templates/header')
+         $company = new WebModel();
+        $details = $company->company_info();
+        $data['company_details'] = $details;
+      return view('templates/header',$data)
                 .view('templates/contact')
                 .view('templates/footer');
     }

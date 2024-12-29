@@ -45,8 +45,8 @@
             <div class="row gx-0 align-items-center">
                 <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                     <div class="d-flex flex-wrap">
-                        <a href="tel:+01234567890" class="text-muted small me-4"><i class="fas fa-phone-alt text-primary me-2"></i>(+255)000 000 000</a>
-                        <a href="mailto:eandrenterprise@gmail.com" class="text-muted small me-0"><i class="fas fa-envelope text-primary me-2"></i>eandrenterprise@gmail.com</a>
+                        <a href="tel:+01234567890" class="text-muted small me-4"><i class="fas fa-phone-alt text-primary me-2"></i><?= $company_details->phone1; ?></a>
+                        <a href="<?= $company_details->email; ?>" class="text-muted small me-0"><i class="fas fa-envelope text-primary me-2"></i><?= $company_details->email; ?></a>
                     </div>
                 </div>
                 <div class="col-lg-4 text-center text-lg-end">
@@ -64,7 +64,8 @@
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary"><img src="public/web/img/newlogo.png" alt="Logo" style="width:150px;"></h1>
+
+                    <h1 class="text-primary"><img src="public/web/img/<?= $company_details->logo; ?>" alt="Logo"></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
