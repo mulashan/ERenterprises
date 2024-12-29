@@ -9,7 +9,7 @@ helper('Query');
     }
 
     .answer {
-        width: 300px;
+        width: 350px;
         word-wrap: break-word;
         word-break: break-word;
         overflow-wrap: break-word;
@@ -65,6 +65,7 @@ helper('Query');
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Country</th>
+                                    <th>Subject</th>
                                     <th>Message</th>
                                     <th>created Date</th>
                                     <th>Action</th>
@@ -76,14 +77,15 @@ helper('Query');
                                  $i=0;
                                 foreach($result as $res){ 
                                     $i++;
-                                  
+                                  $country =get_data('country',$where=array('id'=>$res->country));
                                    ?>
                                    <tr>
                                        <td><?=$i?>.</td>
                                       <td><?php echo $res->name;?></td>
                                        <td><?php echo $res->email ;?></td>
                                        <td><?php echo $res->phone ;?></td>
-                                       <td><?php echo $res->country ;?></td>
+                                       <td class="answer"><?php echo $country[0]->nicename ;?></td>
+                                       <td class="answer"><?php echo $res->subject ;?></td>
                                        <td class="answer"><?php echo $res->message ;?></td>
                                         
                                         <td><?php echo $res->created_date;?></td>

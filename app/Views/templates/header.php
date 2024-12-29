@@ -64,7 +64,7 @@
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary"><img src="public/web/img/logo.png" alt="Logo"></h1>
+                    <h1 class="text-primary"><img src="public/web/img/newlogo.png" alt="Logo" style="width:150px;"></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
@@ -72,7 +72,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="<?php echo base_url();?>" class="nav-item nav-link active">Home</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link" data-bs-toggle="dropdown">
                                 <span class="dropdown-toggle">Furnitures</span>
@@ -90,9 +90,9 @@
                         </div>
                         <a href="about.html" class="nav-item nav-link">Electronics</a>
                         <a href="service.html" class="nav-item nav-link">Other Products</a>
-                        <a href="contact.html" class="nav-item nav-link">Testimonies</a>
-                        <a href="contact.html" class="nav-item nav-link">FAQS</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                        <a href="#testimon" class="nav-item nav-link">Testimonies</a>
+                        <a href="#faqs" class="nav-item nav-link">FAQS</a>
+                        <a href="contact" class="nav-item nav-link">Contact Us</a>
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
                 </div>

@@ -41,19 +41,33 @@ class ContentController extends BaseController
         $validate_data = [
             'c_name' => 'required|min_length[3]|max_length[255]',
             'desc' => 'required|min_length[3]',
+            'route' => 'required',
+            'menu' => 'required',
             ];
            
             if ($this->validate($validate_data)){
+
+                $img = $this->request->getFile('img');
+                $img_name = "";
+                if($img->isValid() && !$img->hasMoved()){
+                    $img_name = $img->getName();
+                    $img->move(ROOTPATH.'public/web/img/',$img_name);
               
                 $data = [
                     'category_name' => ucfirst($this->request->getPost('c_name')),
                     'description' => ucfirst($this->request->getPost('desc')),
+                    'menu_id' => $this->request->getPost('menu'),
+                    'route' => $this->request->getPost('route'),
+                    'image' =>$img_name,
                     'created_by' => session()->get('user_id'),
                     'created_date' => date('Y-m-d H:i:s'),
                   
                 ];
                 $this->pmodel->SaveDetails('categories_tbl',$data);
                 return '<div class="alert alert-success alert-dismissible" role="alert"><strong>Saved successfuly.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';
+                }else{
+                return '<div class="alert alert-warning alert-dismissible" role="alert"><strong>Invalid Image Input.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>';    
+            }
             }else{
                 return "<div class='alert alert-warning'>".$this->validation->listErrors()."</div>";
             }
@@ -289,16 +303,35 @@ function addUsers(){
         $validate_data = [
             'category_name' => 'required|min_length[3]|max_length[255]',
             'description' => 'required|min_length[3]',
+            'route' => 'required',
+            'menu' => 'required',
            
             ];
            
             if ($this->validate($validate_data)){
-              
+
+                 $img = $this->request->getFile('image');
+                $img1 = $this->request->getPost('image1');
+                $img_name = "";
+
+              if($img!=""){
+                if($img->isValid() && !$img->hasMoved()){
+                    $img_name = $img->getName();
+                    $img->move(ROOTPATH.'public/web/img/',$img_name);
+                }else{
+             return '<div class="alert alert-warning alert-dismissible" role="alert"><strong>Invalid Image.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>'; 
+                }
+            }else{
+              $img_name=$img1; 
+            }
+
             $data = [
                     'category_name' => ucfirst($this->request->getPost('category_name')),
+                    'menu_id' => $this->request->getPost('menu'),
+                    'route' => $this->request->getPost('route'),
                     'description' => ucfirst($this->request->getPost('description')),
-                    // 'created_by' => session()->get('user_id'),
-                    // 'created_date' => date('Y-m-d H:i:s'),
+                    'image' =>$img_name,
+                    
                   
                      ];
                $id=$this->request->getPost('id');

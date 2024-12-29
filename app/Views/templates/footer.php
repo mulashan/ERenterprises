@@ -159,4 +159,30 @@
             }
         });
     });
+
+    $('#send_message').submit(function(e){
+    var form_data = $('#send_message').serialize();
+     $('#fdbk').html('<center><b><span class="fa fa-spin fa-spinner"></span> Sending Message...</b></center>');
+       
+        $.ajax({
+          url: "<?= base_url('send_message'); ?>",
+            type: 'POST',
+            data: form_data,
+            success:function(data){
+              $("#send_message")[0].reset();
+                    
+                    setTimeout(function(){
+                        $('#fdbk').html(data);
+                    },1500)
+                
+            },
+            error:function(){
+                setTimeout(function(){
+                $('#fdbk').html('<div class="alert alert-danger alert-dismissible" role="alert"><strong>Sorry! Something went wrong!</strong> Couldnt Sennd Message.<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></div>');
+                 },1500)
+            }
+        });
+        
+        e.preventDefault();
+    }); 
 </script>
