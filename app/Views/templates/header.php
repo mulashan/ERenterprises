@@ -1,6 +1,9 @@
+<?php 
+    $menu_model = new App\Models\WebModel();
+    $menus = $menu_model->getAllMenus();
+?>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <title>E&R Enterprises</title>
@@ -63,7 +66,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-fluid position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
+                <a href="<?= base_url('/'); ?>" class="navbar-brand p-0">
 
                     <h1 class="text-primary"><img src="public/web/img/<?= $company_details->logo; ?>" alt="Logo"></h1>
                 </a>
@@ -72,34 +75,31 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        
-                        <a href="<?php echo base_url();?>" class="nav-item nav-link active">Home</a>
+                        <!-- rotate through all menus -->
+                        <?php 
+                            foreach($menus as $menu){
+                                if($menu->menu_nature == 1){
+                        ?>
+                        <a href="<?=  base_url($menu->path_name);?>" class="nav-item nav-link"><?= $menu->menu_name; ?></a>
+                        <?php 
+                        }else{ 
+                            $sub_menu = $menu_model->getAllSubmenus($menu->id);
+                        ?>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                                <span class="dropdown-toggle">Furnitures</span>
+                                <span class="dropdown-toggle"><?= $menu->menu_name; ?></span>
                             </a>
                             <div class="dropdown-menu m-0">
-                                <a href="feature.html" class="dropdown-item">Outdoor furniture</a>
-                                <a href="feature.html" class="dropdown-item">Home furniture</a>
-                                <a href="team.html" class="dropdown-item">School furniture</a>
-                                <a href="testimonial.html" class="dropdown-item">Recreation furniture</a>
-                                <a href="offer.html" class="dropdown-item">Office furniture</a>
-                                <a href="FAQ.html" class="dropdown-item">Play equipment (children)/Recreation centers</a>
-                                <a href="404.html" class="dropdown-item">Hall furniture</a>
-                                <a href="404.html" class="dropdown-item">Meeting room furniture</a>
+                                <?php   
+                                 if(!empty($sub_menu)){
+                                        foreach($sub_menu as $sub){
+                                ?>
+                                <a href="<?= base_url('$sub->route'); ?>" class="dropdown-item"><?= $sub->category_name; ?></a>
+                                <?php } }else{ } ?>
                             </div>
                         </div>
-                        <a href="about.html" class="nav-item nav-link">Electronics</a>
-                        <a href="service.html" class="nav-item nav-link">Other Products</a>
-<<<<<<< HEAD
-                        <a href="<?= base_url('/#testimonies'); ?>" class="nav-item nav-link">Testimonies</a>
-                        <a href="<?= base_url('/#faqs') ?>" class="nav-item nav-link">FAQS</a>
-                        <a href="<?= base_url('/'); ?>" class="nav-item nav-link">Contact Us</a>
-=======
-                        <a href="#testimon" class="nav-item nav-link">Testimonies</a>
-                        <a href="#faqs" class="nav-item nav-link">FAQS</a>
-                        <a href="contact" class="nav-item nav-link">Contact Us</a>
->>>>>>> ERenterprises/main
+                         <?php  } }  ?>
+                        
                     </div>
                     <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
                 </div>

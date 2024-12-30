@@ -23,4 +23,15 @@ class WebModel extends Model
 		return $this->db->table('faqs_tbl')->select('*')->get()->getResult();
 	}
 
+	function getAllMenus(){
+		return $this->db->table('web_menu_tbl')->select('*')->get()->getResult();
+	}
+
+	function getAllSubmenus($id){
+		$query = $this->db->table('categories_tbl');
+		$query->select('*');
+		$query->where('menu_id',$id);
+		return $query->get()->getResult();
+	}
+
 }

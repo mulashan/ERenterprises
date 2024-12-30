@@ -1,4 +1,3 @@
-<!-- Carousel Start -->
 <?php 
     $model = new App\Models\WebModel();
 ?>
@@ -149,7 +148,7 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="service-item">
                     <div class="service-img">
-                        <img src="public/web/img/service-1.jpg" class="img-fluid rounded-top w-100" alt="Image">
+                        <img src="public/web/img/<?= $category->image; ?>" class="img-fluid rounded-top w-100" alt="Image">
                     </div>
                     <div class="rounded-bottom p-4">
                         <a href="#" class="h4 d-inline-block mb-4"><?= $category->category_name; ?></a>

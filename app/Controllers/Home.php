@@ -47,7 +47,7 @@ class Home extends BaseController
             'country' => 'required',
             'email' => 'required|valid_email',
             'subject' => 'required|min_length[3]|max_length[255]',
-            'message' => 'required|min_length[3]|max_length[255]',
+            'message' => 'required|min_length[3]|max_length[2000]',
             ];
 
              if ($this->validate($validate_data)){
