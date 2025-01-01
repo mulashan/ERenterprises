@@ -68,6 +68,16 @@ class Home extends BaseController
                 }
     }
 
+    function furniture_category($id){
+        $id['category_id'] = $id;
+        $company = new WebModel();
+        $details = $company->company_info();
+        $data['company_details'] = $details;
+        return view('templates/header',$data)
+                view('templates/furniture_home_page',$id)
+                .view('templates/footer');
+    }
+
 
 
 }

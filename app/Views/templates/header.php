@@ -94,7 +94,7 @@
                                  if(!empty($sub_menu)){
                                         foreach($sub_menu as $sub){
                                 ?>
-                                <a href="<?= base_url('$sub->route'); ?>" class="dropdown-item"><?= $sub->category_name; ?></a>
+                                <a href="<?= base_url().$sub->route.'/'.$sub->id; ?>" class="dropdown-item"><?= $sub->category_name; ?></a>
                                 <?php } }else{ } ?>
                             </div>
                         </div>
