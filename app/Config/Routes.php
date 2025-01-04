@@ -49,7 +49,7 @@ $routes->post('send_message', 'Home::get_message');
 $routes->get('web_menu', 'ProductController::web_menu');
 $routes->post('add_menu', 'ProductController::add_menu');
 
-$routes->get('furniture/(:num)', 'Home::furniture_category/$1');
+$routes->get('category_products/(:num)', 'Home::category_items/$1');
 
 
 

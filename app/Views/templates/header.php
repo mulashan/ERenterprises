@@ -21,17 +21,17 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
-        <link rel="stylesheet" href="public/web/lib/animate/animate.min.css"/>
-        <link href="public/web/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-        <link href="public/web/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="<?= base_url(); ?>public/web/lib/animate/animate.min.css"/>
+        <link href="<?= base_url(); ?>public/web/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        <link href="<?= base_url(); ?>public/web/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
 
         <!-- Customized Bootstrap Stylesheet -->
-        <link href="public/web/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?= base_url(); ?>public/web/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="public/web/css/style.css" rel="stylesheet">
-        <link href="public/web/css/login.css" rel="stylesheet">
+        <link href="<?= base_url(); ?>public/web/css/style.css" rel="stylesheet">
+        <link href="<?= base_url(); ?>public/web/css/login.css" rel="stylesheet">
     </head>
 
     <body>
@@ -68,7 +68,7 @@
             <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
                 <a href="<?= base_url('/'); ?>" class="navbar-brand p-0">
 
-                    <h1 class="text-primary"><img src="public/web/img/<?= $company_details->logo; ?>" alt="Logo"></h1>
+                    <h1 class="text-primary"><img src="<?= base_url(); ?>public/web/img/<?= $company_details->logo; ?>" alt="Logo"></h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
