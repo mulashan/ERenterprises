@@ -63,7 +63,7 @@ helper('Query');
                                     <th>#</th>
                                     <th>Product Name</th>
                                     <th>Category Type</th>
-                                    <th>Description</th>
+                                      <th>Description <i style="color:white;">Description Description</i></th>
                                     <th>Image</th>
                                     <th>Created By</th>
                                     <th>created Date</th>
@@ -87,7 +87,7 @@ helper('Query');
                                     ?>
                                    <tr>
                                        <td><?=$i?>.</td>
-                                      <td><?php echo $res->product_name;?></td>
+                                      <td class="answer"><?php echo $res->product_name;?></td>
                                       <td><?php echo $cat[0]->category_name;?></td>
                                         <td class="answer"><?php echo $res->description ;?></td>
                                         <td><img src="<?php echo $source; ?>" width="90" height="50"></td>
