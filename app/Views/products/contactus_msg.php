@@ -3,18 +3,28 @@
 helper('Query');
 ?>
 <style type="text/css">
-     table {
+   table {
         table-layout: relative;
-        width: 100%;
+        max-width: 100%;
     }
 
     .answer {
-        width: 350px;
+       
         word-wrap: break-word;
         word-break: break-word;
         overflow-wrap: break-word;
         white-space: normal; /* Allows text to wrap onto the next line */
     }
+ .cust_popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            font-size: 18px;
+/*            max-height: 100px;*/
+        }
+
 </style>
 <div class="section-body">
     <div class="container-fluid">
@@ -49,12 +59,20 @@ helper('Query');
     </div>
 </div>
 
+ <!-- Popup Modal -->
+<div  class="cust_popup" id="cust_popup" style="display: none;margin-left: 200px;">
+  <div id="results">
+      
+  </div>
+  <button class="btn btn-warning pull-right mt-3" onclick="cancelbtn()">Cancel</button>
+  </div>
 
 <div class="section-body mt-4">
     <div class="container-fluid">
+
         <div class="tab-content">
             <div class="tab-pane active" id="<?= $view;?>-all">
-
+   
                 <div class="card">
                     <div class="table-responsive mt-3">
                         <table class="table table-hover table-vcenter mb-0 text-nowrap"  id="myTable">
@@ -66,13 +84,16 @@ helper('Query');
                                     <th>Phone</th>
                                     <th>Country</th>
                                     <th>Subject</th>
-                                    <th>Message</th>
+                                    <th >Message <i style="color:white;">Message Message</i></th>
+                                    
                                     <th>created Date</th>
                                     <th>Action</th>
                                  
                                 </tr>
                             </thead>
+                        
                             <tbody style="padding:1px;">
+
                                 <?php 
                                  $i=0;
                                 foreach($result as $res){ 
@@ -86,7 +107,19 @@ helper('Query');
                                        <td><?php echo $res->phone ;?></td>
                                        <td class="answer"><?php echo $country[0]->nicename ;?></td>
                                        <td class="answer"><?php echo $res->subject ;?></td>
-                                       <td class="answer"><?php echo $res->message ;?></td>
+                                         <td class="answer">
+                                            <input type="hidden" id="msg<?= $res->id;?>" value="<?= htmlspecialchars($res->message);?>">
+                                            <?php
+                                            // Truncated text
+                                            $short_message = strlen($res->message) > 60 ? substr($res->message, 0, 60) . '...' : $res->message;
+                                            if(strlen($res->message)>60){
+                                            echo htmlspecialchars($short_message).'<button class="btn btn-success" onclick="readMore('.$res->id.')">Read More</button>';
+                                        }else{
+                                            echo htmlspecialchars($res->message);
+                                            }
+                                            ?>
+                                        
+                                        </td>
                                         
                                         <td><?php echo $res->created_date;?></td>
                                         
@@ -178,4 +211,15 @@ helper('Query');
 
           });
         }
+
+        function readMore(id){
+            var msg=$('#msg'+id).val();
+            $('#cust_popup').toggle(100);
+         $('#results').html(msg);
+        }
+
+        function cancelbtn(){
+            $('#cust_popup').hide();
+        }
 </script>
+

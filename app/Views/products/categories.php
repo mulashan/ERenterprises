@@ -67,7 +67,7 @@ helper('Query');
                                     <th>Route name</th>
                                     <th>Image</th>
 
-                                    <th>Description</th>
+                                    <th>Description <i style="color:white;">Description Description</i></th>
                                     <th>Created By</th>
                                     <th>created Date</th>
                                   <th>Action</th>
