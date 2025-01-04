@@ -68,14 +68,33 @@ class Home extends BaseController
                 }
     }
 
-    function furniture_category($id){
-        $id['category_id'] = $id;
+    function category_items($id){
+        // $data['category_id'] = $id;
+        // $company = new WebModel();
+        // $details = $company->company_info();
+        // $data['company_details'] = $details;
+        // return view('templates/header',$data)
+        //         .view('templates/furniture_home_page')
+        //         .view('templates/footer');
+
+        $data['category_id'] = $id;
         $company = new WebModel();
+        $data['category_details'] = $company->getCategoryDetails($id);
         $details = $company->company_info();
         $data['company_details'] = $details;
-        return view('templates/header',$data)
-                view('templates/furniture_home_page',$id)
-                .view('templates/footer');
+
+        $perPage = 6; 
+        $currentPage = $this->request->getVar('page') ?? 1; 
+        $totalProducts = $company->countCategoryProducts($id);
+
+        $data['products'] = $company->getPaginatedCategoryProducts($id, $perPage, $currentPage);
+
+        $pager = \Config\Services::pager();
+        $data['pager'] = $pager->makeLinks($currentPage, $perPage, $totalProducts, 'default_full');
+
+        return view('templates/header', $data)
+            . view('templates/furniture_home_page', $data)
+            . view('templates/footer');
     }
 
 

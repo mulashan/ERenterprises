@@ -3,7 +3,7 @@
 ?>
 <div class="header-carousel owl-carousel">
     <div class="header-carousel-item">
-        <img src="public/web/img/home_picture3.jpg" class="img-fluid w-100" alt="Image">
+        <img src="<?= base_url(); ?>public/web/img/home_picture3.jpg" class="img-fluid w-100" alt="Image">
         <div class="carousel-caption">
             <div class="container">
                 <div class="row gy-0 gx-5">
@@ -16,7 +16,7 @@
                             </p>
                             <div class="d-flex justify-content-center justify-content-md-end flex-shrink-0 mb-4">
                                 <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn More</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="<?= base_url('/#aboutUs'); ?>">Learn More</a>
                             </div>
                             <div class="d-flex align-items-center justify-content-center justify-content-md-end">
                                 <h2 class="text-white me-2">Follow Us:</h2>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="header-carousel-item">
-        <img src="public/web/img/home_picture2.jpg" class="img-fluid w-100" alt="Image">
+        <img src="<?= base_url(); ?>public/web/img/home_picture2.jpg" class="img-fluid w-100" alt="Image">
         <div class="carousel-caption">
             <div class="container">
                 <div class="row g-5">
@@ -45,7 +45,7 @@
                             </p>
                             <div class="d-flex justify-content-center flex-shrink-0 mb-4">
                                 <a class="btn btn-light rounded-pill py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> Watch Video</a>
-                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="#">Learn More</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-4 px-md-5 ms-2" href="<?= base_url('/#aboutUs'); ?>">Learn More</a>
                             </div>
                             <div class="d-flex align-items-center justify-content-center">
                                 <h2 class="text-white me-2">Follow Us:</h2>
@@ -69,7 +69,7 @@
 
 
 <!-- Abvout Start -->
-<div class="container-fluid about py-5">
+<div class="container-fluid about py-5" id="aboutUs">
     <div class="container py-5">
         <div class="row g-5 align-items-center">
             <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
@@ -80,10 +80,10 @@
                     <div class="row g-4">
                         <div class="col-md-6 col-lg-6 col-xl-6">
                             <div class="d-flex">
-                                <div><i class="fas fa-lightbulb fa-3x text-primary"></i></div>
+                                <div><i class="fas fa-envelope fa-3x text-primary"></i></div>
                                 <div class="ms-4">
-                                    <h4>Business Consuluting</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                                    <h4>Mail Us</h4>
+                                    <p><?= $company_details->email; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#" class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Discover Now</a>
+                            <a href="<?= base_url('/#productsCategories'); ?>" class="btn btn-primary rounded-pill py-3 px-5 flex-shrink-0">Discover Now</a>
                         </div>
                         <div class="col-sm-6">
                             <div class="d-flex">
@@ -113,16 +113,9 @@
             </div>
             <div class="col-xl-5 wow fadeInRight" data-wow-delay="0.2s">
                 <div class="bg-primary rounded position-relative overflow-hidden">
-                    <img src="public/web/img/office-2.png" class="img-fluid rounded w-100" alt="">
-                    
-                    <!-- <div class="" style="position: absolute; top: -15px; right: -15px;">
-                        <img src="public/web/img/home_min-3.jpg" class="img-fluid" style="width: 150px; height: 150px; opacity: 0.7;" alt="">
-                    </div>
-                    <div class="" style="position: absolute; top: -20px; left: 10px; transform: rotate(90deg);">
-                        <img src="public/web/img/home_min-3.jpg" class="img-fluid" style="width: 100px; height: 150px; opacity: 0.9;" alt="">
-                    </div> -->
+                    <img src="<?= base_url(); ?>public/web/img/office-2.png" class="img-fluid rounded w-100" alt="">
                     <div class="rounded-bottom">
-                        <img src="public/web/img/living-room-2.png" class="img-fluid rounded-bottom w-100" alt="">
+                        <img src="<?= base_url(); ?>public/web/img/living-room-2.png" class="img-fluid rounded-bottom w-100" alt="">
                     </div>
                 </div>
             </div>
@@ -132,7 +125,7 @@
 <!-- About End -->
 
 <!-- Services Start -->
-<div class="container-fluid service pb-5">
+<div class="container-fluid service pb-5" id="productsCategories">
     <div class="container pb-5">
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
             <h4 class="text-primary">Our Services</h4>
@@ -148,12 +141,12 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="service-item">
                     <div class="service-img">
-                        <img src="public/web/img/<?= $category->image; ?>" class="img-fluid rounded-top w-100" alt="Image">
+                        <img src="<?= base_url(); ?>public/web/img/<?= $category->image; ?>" class="img-fluid rounded-top w-100" alt="Image">
                     </div>
                     <div class="rounded-bottom p-4">
                         <a href="#" class="h4 d-inline-block mb-4"><?= $category->category_name; ?></a>
                         <p class="mb-4"><?= $category->description; ?></p>
-                        <a class="btn btn-primary rounded-pill py-2 px-4" href="#">Learn More</a>
+                        <a class="btn btn-primary rounded-pill py-2 px-4" href="<?= base_url().$category->route.'/'.$category->id; ?>">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -170,7 +163,8 @@
         <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
             <h4 class="text-primary">FAQs</h4>
             <h1 class="display-5 mb-4">Frequently Asked Questions</h1>
-            <p class="mb-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur adipisci facilis cupiditate recusandae aperiam temporibus corporis itaque quis facere, numquam, ad culpa deserunt sint dolorem autem obcaecati, ipsam mollitia hic.
+            <p class="mb-0">
+                Find answers to commonly asked questions about <?= $company_details->name; ?>. Visit <a href="<?= base_url('contact'); ?>">Contact us </a> for more questions.
             </p>
         </div>
         <div class="row g-5 align-items-center">
@@ -197,7 +191,7 @@
             </div>
             <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.2s">
                 <div class="bg-primary rounded">
-                    <img src="public/web/img/faq-image-2.jpg" class="img-fluid w-100" alt="">
+                    <img src="<?= base_url(); ?>public/web/img/faq-image-2.jpg" class="img-fluid w-100" alt="">
                 </div>
             </div>
         </div>
@@ -226,7 +220,7 @@
                     <i class="fas fa-quote-left fa-2x"></i>
                 </div>
                 <div class="testimonial-img">
-                    <img src="public/web/img/user.jpg" class="img-fluid" alt="Image">
+                    <img src="<?= base_url(); ?>public/web/img/user.jpg" class="img-fluid" alt="Image">
                 </div>
                 <div class="testimonial-text">
                     <p class="mb-0"><?= $testimony->message; ?>

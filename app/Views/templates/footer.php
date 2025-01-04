@@ -14,12 +14,11 @@
                     <div class="col-md-6 col-lg-6 col-xl-2">
                         <div class="footer-item">
                             <h4 class="text-white mb-4">Quick Links</h4>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> About Us</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Furniture</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Electronics</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Other products</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Testimonies</a>
-                            <a href="#"><i class="fas fa-angle-right me-2"></i> Contact us</a>
+                            <a href="<?= base_url('/'); ?>"><i class="fas fa-angle-right me-2"></i>Home</a>
+                            <a href="<?= base_url('/#productsCategories'); ?>"><i class="fas fa-angle-right me-2"></i>Products</a>
+                            <a href="<?= base_url('/#aboutUs'); ?>"><i class="fas fa-angle-right me-2"></i> About Us</a>
+                            <a href="<?= base_url('/#testimonies'); ?>"><i class="fas fa-angle-right me-2"></i> Testimonies</a>
+                            <a href="<?= base_url('contact'); ?>"><i class="fas fa-angle-right me-2"></i> Contact us</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-6 col-xl-3">
@@ -117,12 +116,12 @@
         <!-- JavaScript Libraries -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="public/web/lib/wow/wow.min.js"></script>
-        <script src="public/web/lib/easing/easing.min.js"></script>
-        <script src="public/web/lib/waypoints/waypoints.min.js"></script>
-        <script src="public/web/lib/counterup/counterup.min.js"></script>
-        <script src="public/web/lib/lightbox/js/lightbox.min.js"></script>
-        <script src="public/web/lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="<?= base_url(); ?>public/web/lib/wow/wow.min.js"></script>
+        <script src="<?= base_url(); ?>public/web/lib/easing/easing.min.js"></script>
+        <script src="<?= base_url(); ?>public/web/lib/waypoints/waypoints.min.js"></script>
+        <script src="<?= base_url(); ?>public/web/lib/counterup/counterup.min.js"></script>
+        <script src="<?= base_url(); ?>public/web/lib/lightbox/js/lightbox.min.js"></script>
+        <script src="<?= base_url(); ?>public/web/lib/owlcarousel/owl.carousel.min.js"></script>
         
 
         <!-- Template Javascript -->
