@@ -1,0 +1,14 @@
+CRITICAL - 2025-01-05 17:13:32 --> ErrorException: Undefined variable $Model
+[Method: GET, Route: /]
+in APPPATH\Views\templates\index.php on line 272.
+ 1 APPPATH\Views\templates\index.php(272): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $Model', 'C:\\wamp64\\www\\e_renterprise\\app\\Views\\templates\\index.php', 272)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\wamp64\\www\\e_renterprise\\app\\Views\\templates\\index.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('templates/index', [], true)
+ 5 APPPATH\Controllers\Home.php(25): view('templates/index')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

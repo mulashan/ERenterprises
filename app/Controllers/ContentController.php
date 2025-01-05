@@ -122,7 +122,7 @@ function addPatners(){
       
         $validate_data = [
             'fname' => 'required|min_length[3]|max_length[255]',
-            'email' => 'required|valid_email',
+            'email' => 'required',
             ];
            
             if ($this->validate($validate_data)){
@@ -134,7 +134,7 @@ function addPatners(){
 
                 $data = [
                     'name' => ucfirst($this->request->getPost('fname')),
-                    'email' => $this->request->getPost('email'),
+                    'website' => $this->request->getPost('email'),
                     'logo' =>$img_name,
                     'created_by' => session()->get('user_id'),
                     'created_date' => date('Y-m-d H:i:s'),
@@ -411,8 +411,7 @@ function addUsers(){
       
         $validate_data = [
             'name' => 'required|min_length[3]|max_length[255]',
-            'email' => 'required|valid_email',
-           
+            'email' => 'required',
             ];
            
             if ($this->validate($validate_data)){
@@ -434,7 +433,7 @@ function addUsers(){
 
                 $data = [
                      'name' => ucfirst($this->request->getPost('name')),
-                    'email' => $this->request->getPost('email'),
+                    'website' => $this->request->getPost('email'),
                     'logo' =>$img_name,
                   
                 ];

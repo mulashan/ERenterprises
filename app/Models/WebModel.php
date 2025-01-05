@@ -62,4 +62,8 @@ class WebModel extends Model
 	        ->getResult();
 	}
 
+	public function getAllClients(){
+		return $this->db->table('partners_tbl')->select('*')->get()->getResult();
+	}
+
 }

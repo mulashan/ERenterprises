@@ -20,7 +20,7 @@ helper('Query');
                        <div class="form-group row mb-3">
                      <label class="col-md-2 col-form-label"> Email</label>
                      <div class="col-md-5">
-                         <input type="email" class="form-control" name="email" placeholder="enter email" autocomplete="off" value="<?= $item[0]->email;?>">
+                         <input type="text" class="form-control" name="email" placeholder="enter email" autocomplete="off" value="<?= $item[0]->website;?>">
                         
                      </div>
                    </div>

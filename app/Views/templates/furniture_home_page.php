@@ -29,7 +29,17 @@
             <?php foreach ($products as $index => $product): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card">
-                        <img src="<?= base_url(); ?>public/web/img/<?= $product->image; ?>" class="card-img-top img-fluid" alt="<?= $product->product_name; ?>">
+                        <?php if (is_file(FCPATH . 'public/web/img/' . $product->image)): ?>
+                            <img 
+                                src="<?= base_url(); ?>public/web/img/<?= $product->image; ?>" 
+                                class="card-img-top img-fluid" 
+                                alt="<?= $product->product_name; ?>">
+                        <?php else: ?>
+                            <img 
+                                src="<?= base_url(); ?>public/web/img/placeholder.jpg" 
+                                class="card-img-top img-fluid" 
+                                alt="Image not available">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title"><?= $product->product_name; ?></h5>
                             <p class="card-text"><?= $product->description; ?></p>
@@ -38,15 +48,16 @@
                 </div>
 
                 <?php if (($index + 1) % 3 == 0): ?>
-                    </div><div class="row"> <!-- Create a new row every 3 products -->
-                <?php endif; ?>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <div class="col-12">
-                <p class="text-center">No products available.</p>
-            </div>
-        <?php endif; ?>
-    </div>
+                </div>
+                <div class="row"> <!-- Create a new row every 3 products -->
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php else: ?>
+                    <div class="col-12">
+                        <p class="text-center">No products available.</p>
+                    </div>
+                        <?php endif; ?>
+                </div>
 
     <!-- Pagination -->
     <div class="d-flex justify-content-center mt-4">

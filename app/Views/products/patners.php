@@ -71,7 +71,7 @@ helper('Query');
                                    <tr>
                                        <td><?=$i?>.</td>
                                       <td><?php echo $res->name;?></td>
-                                       <td><?php echo $res->email ;?></td>
+                                       <td><?php echo $res->website ;?></td>
                                         <td><img src="<?php echo $source; ?>" width="90" height="50"></td>
                                         <td><?php echo $results[0]->full_name;?></td>
                                         <td><?php echo $res->created_date;?></td>
@@ -110,9 +110,9 @@ helper('Query');
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-3 col-form-label">Email<span class="text-danger">*</span></label>
+                    <label class="col-md-3 col-form-label">Website Link<span class="text-danger">*</span></label>
                     <div class="col-md-5">
-                        <input type="email" id="email" class="form-control" name="email" required="required">
+                        <input type="text" id="email" class="form-control" name="email" required="required">
                     <span id="email" class="text-danger"></span>
                     </div>
                 </div>

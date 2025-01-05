@@ -141,10 +141,20 @@
             <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.2s">
                 <div class="service-item">
                     <div class="service-img">
-                        <img src="<?= base_url(); ?>public/web/img/<?= $category->image; ?>" class="img-fluid rounded-top w-100" alt="Image">
+                        <?php if (is_file(FCPATH . 'public/web/img/' . $category->image)): ?>
+                            <img 
+                                src="<?= base_url(); ?>public/web/img/<?= $category->image; ?>" 
+                                class="card-img-top img-fluid" 
+                                alt="<?= $category->category_name; ?>">
+                        <?php else: ?>
+                            <img 
+                                src="<?= base_url(); ?>public/web/img/placeholder.jpg" 
+                                class="card-img-top img-fluid" 
+                                alt="Image not available">
+                        <?php endif; ?>
                     </div>
                     <div class="rounded-bottom p-4">
-                        <a href="#" class="h4 d-inline-block mb-4"><?= $category->category_name; ?></a>
+                        <a href="<?= base_url().$category->route.'/'.$category->id; ?>" class="h4 d-inline-block mb-4"><?= $category->category_name; ?></a>
                         <p class="mb-4"><?= $category->description; ?></p>
                         <a class="btn btn-primary rounded-pill py-2 px-4" href="<?= base_url().$category->route.'/'.$category->id; ?>">Learn More</a>
                     </div>
@@ -249,3 +259,27 @@
 </div>
 <!-- Testimonial End -->
 
+<!-- partners   -->
+
+<div class="container-fluid testimonial pb-5" >
+    <div class="container pb-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-primary">Clients & Partners</h4>
+            <h1 class="display-5 mb-4">Our Business Clients and Partners </h1>
+        </div>
+        <div class="d-flex justify-content-center">
+            <?php
+                $clients = $model->getAllClients();
+                if(!empty($clients)){
+                    foreach($clients as $client){
+            ?>
+            <a href="<?=  $client->website; ?>" target="_blank" rel="noopener noreferrer">
+                <img src="<?= base_url(); ?>public/web/img/<?= $client->logo; ?>" alt="<?= base_url(); ?>public/web/img/<?= $client->name; ?>">
+            </a>&nbsp;&nbsp;&nbsp;       
+            <?php } } ?>
+        </div>
+    </div>
+</div>
+
+
+<!-- end of partners -->

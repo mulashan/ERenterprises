@@ -67,7 +67,7 @@
                         <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>E&R Enterprises</a>, All right reserved.</span>
                     </div>
                     <div class="col-md-6 text-center text-md-end text-body">
-                        Designed By <a class="border-bottom text-white" href="https://rwazi.com">SyliverStarCompany</a>
+                        Designed By <a class="border-bottom text-white" href="#">SyliverStarCompany</a>
                     </div>
                 </div>
             </div>
